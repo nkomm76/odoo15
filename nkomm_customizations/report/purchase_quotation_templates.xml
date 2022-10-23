@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+
+        <xpath expr="//th[@name='th_description']" position="before">
+            <th name="th_pos" class="text-left">
+                <span>Pos.</span>
+            </th>
+        </xpath>
+
+        <xpath expr="//t[@t-foreach='o.order_line']" position="before">
+            <t t-set="line_count" t-value="1"/>
+        </xpath>
+
+        <xpath expr="//td[@id='product']" position="before">
+            <td name="td_pos">
+                <span t-esc="line_count"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t[@t-if='not order_line.display_type']" position="inside">
+            <t t-set="line_count" t-value="line_count + 1"/>
+        </xpath>
+
+        <xpath expr="//p[@t-field='o.notes']" position="replace">
+            <div class="note" style="font-size:10px !important">
+                <p t-field="o.notes"/>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

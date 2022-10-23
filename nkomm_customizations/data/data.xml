@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="contact_sequence_number" model="ir.cron">
+        <field name="name">Recompute Sequence Numbers</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+lastid = 0
+for record in model.search([], order='id asc'):
+  sq = str(record.id).zfill(5)
+  record['sequence_number'] ='CN'+sq
+  lastid = record.id
+
+seq = env['ir.sequence'].search([('code', '=','res.partner')])
+seq['number_next_actual'] = lastid+1
+        </field>
+        <field name="interval_number">0</field>
+        <field name="active">False</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">1</field>
+    </record>
+</odoo>
