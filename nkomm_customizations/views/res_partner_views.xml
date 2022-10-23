@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">Nkomm Partner Form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!--<xpath expr="//field[@id='company']" position="before">
+                [<field name="sequence_number"/>]
+            </xpath>-->
+            <xpath expr="//span[@name='address_name']" position="before">
+                <field name="sequence_number" string="Customer Number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">Nkomm Partner Tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="sequence_number" string="Customer Number" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
