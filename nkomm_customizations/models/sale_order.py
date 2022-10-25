@@ -19,6 +19,7 @@ class SaleOrder(models.Model):
         else:
             return order
 
+    @api.onchange('order_line')
     def _compute_is_recurring_order(self):
         """Compute the if there is any line that has subscription product"""
         for order in self:
