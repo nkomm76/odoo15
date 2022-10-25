@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, _
+from odoo import models, fields, _, api
+from odoo.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
@@ -9,6 +10,14 @@ class SaleOrder(models.Model):
     start_subscription_on = fields.Date(string="Vertragsbeginn")
     is_recurring_order = fields.Boolean(compute='_compute_is_recurring_order')
     subscription_invoice_today = fields.Boolean(compute='_compute_subscription_invoice_today')
+
+    @api.model
+    def create(self, vals):
+        order = super(SaleOrder, self).create(vals)
+        if not vals['start_subscription_on'] and any(line.product_id.recurring_invoice for line in order.order_line):
+            raise ValidationError("Bitte fügen Sie das Datum des Vertragsbeginns für die Abonnementprodukte hinzu.")
+        else:
+            return order
 
     def _compute_is_recurring_order(self):
         """Compute the if there is any line that has subscription product"""
