@@ -9,6 +9,7 @@
         - Customized Sales Reports
         - Customized Invoice Reports
         - Customized Purchase Reports
+        - Sale Subscription Customzations
     """,
 
     'author': "aleemcahn",
@@ -34,6 +35,7 @@
         'report/din5008_report.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
+        'views/sale_subscription_view.xml',
     ],
 
 }

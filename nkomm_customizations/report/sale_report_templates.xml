@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_included']"
+        <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
                position="replace">
-            <span groups="account.group_show_line_subtotals_tax_included">Gesamt</span>
+            <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
         </xpath>
 
         <xpath expr="//th[@name='th_description']" position="before">
