@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
+               position="replace">
+            <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
+        </xpath>
+
+        <xpath expr="//th[@name='th_description']" position="before">
+            <th name="th_pos" class="text-left">
+                <span>Pos.</span>
+            </th>
+        </xpath>
+
+        <xpath expr="//t[@t-foreach='doc.order_line']" position="before">
+            <t t-set="line_count" t-value="1"/>
+        </xpath>
+
+        <xpath expr="//span[@t-field='line.product_uom']" position="replace"/>
+
+        <xpath expr="//td[@name='td_name']" position="before">
+            <td name="td_pos">
+                <span t-esc="line_count"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t[@t-if='not line.display_type']" position="inside">
+            <t t-set="line_count" t-value="line_count + 1"/>
+        </xpath>
+
+        <xpath expr="//p[@t-field='doc.note']" position="replace">
+            <div class="note" style="font-size:10px !important">
+                <p t-field="doc.note"/>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">Nkomm Sale Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='order_details']" position="inside">
+                <field name="subscription_invoice_today" invisible="1"/>
+                <field name="is_recurring_order" invisible="1"/>
+                <field name="start_subscription_on" attrs="{'required': [('is_recurring_order', '=', True)]}"/>
+            </xpath>
+
+            <!--<xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('invoice_status', '!=', 'to invoice'), ('subscription_invoice_today', '=', False)]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', ('invoice_status', '!=', 'no'), ('state', '!=', 'sale'), ('subscription_invoice_today', '=', False)]}</attribute>
+            </xpath>-->
+
+        </field>
+    </record>
+</odoo>

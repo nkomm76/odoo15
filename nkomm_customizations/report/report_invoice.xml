@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+            <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']" position="replace">
+                <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
+            </xpath>
+
+            <xpath expr="//th[@name='th_description']" position="before">
+                <th name="th_pos" class="text-left">
+                    <span>Pos.</span>
+                </th>
+            </xpath>
+
+            <xpath expr="//span[@t-field='line.product_uom_id']" position="replace"/>
+
+            <xpath expr="//t[@t-foreach='lines']" position="before">
+                <t t-set="line_count" t-value="1"/>
+            </xpath>
+
+            <xpath expr="//td[@name='account_invoice_line_name']" position="before">
+                <td name="td_pos">
+                    <span t-esc="line_count"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//t[@name='account_invoice_line_accountable']" position="inside">
+                <t t-set="line_count" t-value="line_count + 1"/>
+            </xpath>
+
+            <xpath expr="//p[@name='payment_communication']" position="attributes">
+                <attribute name="class">mt-4</attribute>
+            </xpath>
+
+            <xpath expr="//div[@name='comment']" position="attributes">
+                <attribute name="style">font-size:10px !important</attribute>
+            </xpath>
+        </template>
+    </data>
+</odoo>
