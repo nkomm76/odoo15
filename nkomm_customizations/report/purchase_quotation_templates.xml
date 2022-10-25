@@ -12,6 +12,8 @@
             <t t-set="line_count" t-value="1"/>
         </xpath>
 
+        <xpath expr="//span[@t-field='order_line.product_uom']" position="replace"/>
+
         <xpath expr="//td[@id='product']" position="before">
             <td name="td_pos">
                 <span t-esc="line_count"/>
