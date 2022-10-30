@@ -6,6 +6,7 @@ import logging
 import base64
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -55,7 +56,8 @@ class ProductProduct(models.Model):
 
     def get_product_details(self):
         """get the product details"""
-
+        if not self.env.company.base_url:
+            raise ValidationError("ITscope API ist nicht konfiguriert! Bitte nehmen Sie die Konfiguration für ITscope in den Allgemeinen Einstellungen vor")
         url = f"{self.env.company.base_url}/products/id/{self.itscope_id}/standard.json?realtime=false"
         json_response = self.get_request_response(url)
         self.response_text = json_response

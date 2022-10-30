@@ -26,10 +26,10 @@
                         attrs="{'invisible': [('itscope_id', '=', False)]}"
                         type="object" class="btn btn-primary"/>-->
 
-                <button name="action_get_product_details" string="ITscope: Import Details"
+                <button name="action_get_product_details" string="ITscope: Importieren Details"
                         attrs="{'invisible': ['|', ('itscope_id', '=', False), ('last_updated', '!=', False)]}"
                         type="object" class="btn btn-primary"/>
-                <button name="action_get_product_details" string="ITscope: Update Details"
+                <button name="action_get_product_details" string="ITscope: aktualisierte Details"
                         attrs="{'invisible': ['|', ('itscope_id', '=', False), ('last_updated', '=', False)]}"
                         type="object" class="btn btn-secondary"/>
             </xpath>
