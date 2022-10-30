@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[hasclass('page')]" position="before">
+            <style>
+                .din_page.invoice_note .page tr td{
+                    vertical-align: top;
+                }
+            </style>
+            
+        </xpath>
         <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
                position="replace">
             <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>

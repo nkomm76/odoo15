@@ -17,23 +17,23 @@
                             </div>
                             <div class="content-group">
                                 <div class="row mt16">
-                                    <label for="base_url" class="col-lg-3 o_light_label"/>
+                                    <label for="base_url" string="ITscope Basis-URL" class="col-lg-3 o_light_label"/>
                                     <field name="base_url" class="oe_inline"/>
                                 </div>
                                 <div class="row">
-                                    <label for="api_account_id" class="col-lg-3 o_light_label"/>
+                                    <label for="api_account_id" string="Konto-ID" class="col-lg-3 o_light_label"/>
                                     <field name="api_account_id" class="oe_inline"/>
                                 </div>
                             <div class="row">
-                                <label for="api_access_id" class="col-lg-3 o_light_label"/>
+                                <label for="api_access_id" string="Zugriffs-ID" class="col-lg-3 o_light_label"/>
                                 <field name="api_access_id" class="oe_inline"/>
                             </div>
                             <div class="row">
-                                <label for="api_key" class="col-lg-3 o_light_label"/>
+                                <label for="api_key" string="API-Schlüssel" class="col-lg-3 o_light_label"/>
                                 <field name="api_key" class="oe_inline" readonly="1" style="margin-left: 20px;margin-top: 10px;" widget="CopyClipboardChar"/>
                             </div>
                             <div style="position:relative;" attrs="{'invisible': ['|', ('api_account_id', '=', False), ('api_access_id', '=', False)]}">
-                                <button type="object" name="generate_api_key"  string="Generate API Key" icon="fa-arrow-right" class="btn-link"/>
+                                <button type="object" name="generate_api_key"  string="API-Schlüssel generieren" icon="fa-arrow-right" class="btn-link"/>
                             </div>
                             </div>
                         </div>
