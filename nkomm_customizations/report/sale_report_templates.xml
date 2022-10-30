@@ -36,6 +36,12 @@
             <t t-set="line_count" t-value="line_count + 1"/>
         </xpath>
 
+        <xpath expr="//td[@name='td_taxes']" position="replace">
+            <td name="td_taxes" class="text-right">
+                <span t-esc="', '.join(map(lambda x: (str(x.amount)+'%'), line.tax_id))"/>
+            </td>
+        </xpath>
+
         <xpath expr="//p[@t-field='doc.note']" position="replace">
             <div class="note" style="font-size:10px !important">
                 <p t-field="doc.note"/>
