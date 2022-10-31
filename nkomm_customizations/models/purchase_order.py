@@ -13,3 +13,15 @@ class PurchaseOrder(models.Model):
                 data.append((_("Kundennummer"), record.partner_id.sequence_number))
                 record.l10n_de_template_data = data
         return res
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = 'purchase.order.line'
+
+    def _get_product_purchase_description(self, product_lang):
+        self.ensure_one()
+        name = f"{product_lang.display_name}!!"
+        if product_lang.description_purchase:
+            name += '\n' + product_lang.description_purchase
+
+        return name

@@ -20,8 +20,19 @@
             </th>
         </xpath>
 
-        <xpath expr="//td[@id='product']/span" position="attributes">
-            <attribute name="class">font-weight-bold</attribute>
+        <xpath expr="//td[@id='product']" position="replace">
+            <td id="product">
+                <t t-if="'!!' in line.name">
+                    <t t-set="product_name" t-value="line.name.split('!!')[0]"/>
+                    <t t-set="product_desc" t-value="line.name.split('!!')[1]"/>
+                    <span class="font-weight-bold" t-esc="product_name"/>
+                    <br/>
+                    <span t-esc="product_desc"/>
+                </t>
+                <t t-else="">
+                    <span t-field="line.name"/>
+                </t>
+            </td>
         </xpath>
 
         <xpath expr="//t[@t-foreach='o.order_line']" position="before">
