@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//div[hasclass('page')]" position="before">
+            <style>
+                .din_page.invoice_note .page tr td{
+                vertical-align: top;
+                }
+            </style>
+        </xpath>
 
         <xpath expr="//th[@name='th_description']" position="before">
             <th name="th_pos" class="text-left">
@@ -10,6 +17,10 @@
 
         <xpath expr="//t[@t-foreach='o.order_line']" position="before">
             <t t-set="line_count" t-value="1"/>
+        </xpath>
+
+        <xpath expr="//td[@id='product']/span" position="attributes">
+            <attribute name="class">font-weight-bold</attribute>
         </xpath>
 
         <xpath expr="//span[@t-field='order_line.product_uom']" position="replace"/>
