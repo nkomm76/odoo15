@@ -42,6 +42,13 @@ class ProductTemplate(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    def action_get_product_details(self):
+        res = self.get_product_details()
+        if res.get('success', False):
+            self.product_tmpl_id.message_post(body=f"ITscope: Product Details Updated on: {res.get('last_updated', False)}")
+        else:
+            return res
+
     def get_request_response(self, url):
         """get the request and return the response"""
         url = url
