@@ -20,6 +20,10 @@
             </th>
         </xpath>
 
+        <xpath expr="//td[@name='td_name']/span" position="attributes">
+            <attribute name="class">font-weight-bold</attribute>
+        </xpath>
+
         <xpath expr="//t[@t-foreach='doc.order_line']" position="before">
             <t t-set="line_count" t-value="1"/>
         </xpath>

@@ -21,6 +21,10 @@
                 </th>
             </xpath>
 
+            <xpath expr="//td[@name='account_invoice_line_name']/span" position="attributes">
+                <attribute name="class">font-weight-bold</attribute>
+            </xpath>
+
             <xpath expr="//span[@t-field='line.product_uom_id']" position="replace"/>
 
             <xpath expr="//t[@t-foreach='lines']" position="before">
