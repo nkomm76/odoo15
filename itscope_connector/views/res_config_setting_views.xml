@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.itscope</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='integration']" position="inside">
+                <div class="col-12 col-lg-6 mt-4 o_setting_box" id="itscope_connector">
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">ITscope API Credentials</span>
+                        <div class="content-group">
+                            <div class="text-muted mb8">
+                                Set the API credentials for ITscope here
+                            </div>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="base_url" string="ITscope Basis-URL" class="col-lg-3 o_light_label"/>
+                                    <field name="base_url" class="oe_inline"/>
+                                </div>
+                                <div class="row">
+                                    <label for="api_account_id" string="Konto-ID" class="col-lg-3 o_light_label"/>
+                                    <field name="api_account_id" class="oe_inline"/>
+                                </div>
+                            <div class="row">
+                                <label for="api_access_id" string="Zugriffs-ID" class="col-lg-3 o_light_label"/>
+                                <field name="api_access_id" class="oe_inline"/>
+                            </div>
+                            <div class="row">
+                                <label for="api_key" string="API-Schlüssel" class="col-lg-3 o_light_label"/>
+                                <field name="api_key" class="oe_inline" readonly="1" style="margin-left: 20px;margin-top: 10px;" widget="CopyClipboardChar"/>
+                            </div>
+                            <div style="position:relative;" attrs="{'invisible': ['|', ('api_account_id', '=', False), ('api_access_id', '=', False)]}">
+                                <button type="object" name="generate_api_key"  string="API-Schlüssel generieren" icon="fa-arrow-right" class="btn-link"/>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

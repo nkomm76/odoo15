@@ -2,7 +2,16 @@
 <odoo>
     <data>
         <template id="report_invoice_document" inherit_id="account.report_invoice_document">
-            <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']" position="replace">
+            <xpath expr="//div[hasclass('page')]" position="before">
+                <style>
+                    .din_page.invoice_note .page tr td{
+                    vertical-align: top;
+                    }
+                </style>
+            </xpath>
+
+            <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
+                   position="replace">
                 <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
             </xpath>
 
@@ -10,6 +19,21 @@
                 <th name="th_pos" class="text-left">
                     <span>Pos.</span>
                 </th>
+            </xpath>
+
+            <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+                <td name="account_invoice_line_name">
+                    <t t-if="'!!' in line.name">
+                        <t t-set="product_name" t-value="line.name.split('!!')[0]"/>
+                        <t t-set="product_desc" t-value="line.name.split('!!')[1]"/>
+                        <span class="font-weight-bold" t-esc="product_name"/>
+                        <br/>
+                        <span t-esc="product_desc"/>
+                    </t>
+                    <t t-else="">
+                        <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                    </t>
+                </td>
             </xpath>
 
             <xpath expr="//span[@t-field='line.product_uom_id']" position="replace"/>
@@ -28,13 +52,16 @@
                 <t t-set="line_count" t-value="line_count + 1"/>
             </xpath>
 
+            <xpath expr="//span[@id='line_tax_ids']" position="replace">
+                <span t-esc="', '.join(map(lambda x: (str(x.amount)+'%'), line.tax_ids))" id="line_tax_ids"/>
+            </xpath>
+
             <xpath expr="//p[@name='payment_communication']" position="attributes">
                 <attribute name="class">mt-4</attribute>
             </xpath>
 
-            <xpath expr="//div[@name='comment']" position="attributes">
-                <attribute name="style">font-size:10px !important</attribute>
-            </xpath>
+            <xpath expr="//div[@name='comment']" position="replace"/>
+
         </template>
     </data>
 </odoo>

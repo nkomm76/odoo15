@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">NKomm.inherits.Product.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='detailed_type']" position="before">
+                <field name="itscope_id"/>
+            </xpath>
+            <xpath expr="//page[@name='general_information']/group/group[2]" position="after">
+                <group string="ITscope-Details">
+                    <field name="stock_status" string="Verfügbarkeitsstatus"/>
+                    <field name="stock_available_qty" string="Menge auf Lager verfügbar"/>
+                    <field name="name_pdf_datasheet" invisible="1"/>
+                    <field name="pdf_datasheet" string="Standard-PDF-Datenblatt" filename="name_pdf_datasheet" readonly="1"/>
+                    <field name="last_updated" string="Zuletzt aktualisiert" readonly="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <!--<button name="action_get_product_details" string="Import Product Details"
+                        attrs="{'invisible': [('itscope_id', '=', False)]}"
+                        type="object" class="btn btn-primary"/>-->
+
+                <button name="action_get_product_details" string="ITscope: Importieren Details"
+                        attrs="{'invisible': ['|', ('itscope_id', '=', False), ('last_updated', '!=', False)]}"
+                        type="object" class="btn btn-primary"/>
+                <button name="action_get_product_details" string="ITscope: aktualisierte Details"
+                        attrs="{'invisible': ['|', ('itscope_id', '=', False), ('last_updated', '=', False)]}"
+                        type="object" class="btn btn-secondary"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
