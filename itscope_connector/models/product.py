@@ -4,6 +4,7 @@ import json
 import requests
 import logging
 import base64
+import pycountry
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -174,7 +175,12 @@ class ProductProduct(models.Model):
             supplier = next(item for item in company_list if item.get('supplier', '').get('id', '') == supplier_item_dict.get('supplierId', ''))
             if supplier:
                 country_id = False
-                country = self.env['res.country'].sudo().search([('code', 'in', [supplier.get('country'), 'DE'])])
+                code = supplier.get('country')
+                if code and len(code) > 2:
+                    country_data = pycountry.countries.get(alpha_3=code)
+                    if country_data:
+                        code = country_data.alpha_2
+                country = self.env['res.country'].sudo().search([('code', '=', code)])
                 if country:
                     country_id = country.id
 
