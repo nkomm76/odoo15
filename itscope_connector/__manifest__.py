@@ -19,6 +19,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'product'],
+    'external_dependencies': {'python': ['pycountry']},
 
     # always loaded
     'data': [
