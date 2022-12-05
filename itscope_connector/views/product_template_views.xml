@@ -18,6 +18,7 @@
                     <field name="stock_available_qty" string="Menge auf Lager verfügbar"/>
                     <field name="name_pdf_datasheet" invisible="1"/>
                     <field name="pdf_datasheet" string="Standard-PDF-Datenblatt" filename="name_pdf_datasheet" readonly="1"/>
+                    <field name="html_datasheet" string="Standard-Html-Datenblatt" readonly="1"/>
                     <field name="last_updated" string="Zuletzt aktualisiert" readonly="1"/>
                 </group>
             </xpath>

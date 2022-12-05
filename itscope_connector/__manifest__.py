@@ -18,7 +18,7 @@
     'version': '15.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product'],
+    'depends': ['base', 'product', 'website_sale'],
     'external_dependencies': {'python': ['pycountry']},
 
     # always loaded
@@ -27,6 +27,7 @@
         'wizard/message_wizard.xml',
         'views/product_template_views.xml',
         'views/res_config_setting_views.xml',
+        'views/templates.xml',
     ],
 
 }

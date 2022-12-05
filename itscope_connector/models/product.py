@@ -28,6 +28,7 @@ class ProductTemplate(models.Model):
     response_text = fields.Text(string="ITscope Response", copy=False)
     last_updated = fields.Datetime("Last Updated", copy=False)
     pdf_datasheet = fields.Binary("Standard PDF Datasheet", copy=False)
+    html_datasheet = fields.Text(string="Standard-Html-Datenblatt", copy=False)
     name_pdf_datasheet = fields.Char('PDF Name', default='Standard-PDF-Datasheet.pdf', size=32)
 
     def action_get_product_details(self):
@@ -89,6 +90,9 @@ class ProductProduct(models.Model):
             if image_url:
                 image = self.get_file_from_url(image_url)
 
+            # Html Content URL
+            html_url = product_dict.get('standardHtmlDatasheet', '')
+
             # Product PDF
             pdf_url = product_dict.get('standardPdfDatasheet', '')
             if pdf_url:
@@ -135,6 +139,7 @@ class ProductProduct(models.Model):
                 'last_updated': last_updated,
                 'detailed_type': 'product',
                 'image_1920': image,
+                'html_datasheet': html_url,
                 'pdf_datasheet': pdf,
                 'name': product_name,
                 'description_sale': product_description,
