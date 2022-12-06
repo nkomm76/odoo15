@@ -4,6 +4,18 @@ from odoo import models, fields, _
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    digital_invoice = fields.Boolean(related="partner_id.digital_invoice")
+
+    def action_invoice_sent(self):
+        """
+        Set is_print based on digital_invoice set on partner
+        """
+        res = super(AccountMove, self).action_invoice_sent()
+        ctx = res.get('context', False)
+        if ctx:
+            ctx['default_is_print'] = not self.digital_invoice
+        return res
+
     def _compute_l10n_de_template_data(self):
         """Add Customer Number to the template data"""
         res = super(AccountMove, self)._compute_l10n_de_template_data()
