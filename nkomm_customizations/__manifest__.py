@@ -35,6 +35,7 @@
         'report/din5008_report.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
+        'views/account_views.xml',
         'views/sale_subscription_view.xml',
     ],
 
