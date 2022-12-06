@@ -17,15 +17,21 @@
                     <field name="stock_status" string="Verfügbarkeitsstatus"/>
                     <field name="stock_available_qty" string="Menge auf Lager verfügbar"/>
                     <field name="name_pdf_datasheet" invisible="1"/>
-                    <field name="pdf_datasheet" string="Standard-PDF-Datenblatt" filename="name_pdf_datasheet" readonly="1"/>
-                    <field name="html_datasheet" string="Standard-Html-Datenblatt" readonly="1"/>
+                    <field name="pdf_datasheet" string="Standard-PDF-Datenblatt" filename="name_pdf_datasheet"
+                           readonly="1"/>
+                    <label for="html_datasheet" string="Standard-Html-Datenblatt"/>
+                    <div class="o_row">
+                        <field name="html_datasheet" readonly="1"/>
+                        <button name="action_get_product_html_details" type="object" class="btn btn-primary fa fa-refresh"
+                                aria-label="Fetch Html Content"
+                                role="img"
+                                attrs="{'invisible': [('itscope_id', '!=', False), ('html_datasheet', '!=', False)]}"/>
+                    </div>
                     <field name="last_updated" string="Zuletzt aktualisiert" readonly="1"/>
                 </group>
             </xpath>
             <xpath expr="//header" position="inside">
-                <!--<button name="action_get_product_details" string="Import Product Details"
-                        attrs="{'invisible': [('itscope_id', '=', False)]}"
-                        type="object" class="btn btn-primary"/>-->
+
 
                 <button name="action_get_product_details" string="ITscope: Importieren Details"
                         attrs="{'invisible': ['|', ('itscope_id', '=', False), ('last_updated', '!=', False)]}"

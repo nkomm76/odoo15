@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import ast
 
 import requests
 import logging
@@ -30,6 +31,20 @@ class ProductTemplate(models.Model):
     pdf_datasheet = fields.Binary("Standard PDF Datasheet", copy=False)
     html_datasheet = fields.Text(string="Standard-Html-Datenblatt", copy=False)
     name_pdf_datasheet = fields.Char('PDF Name', default='Standard-PDF-Datasheet.pdf', size=32)
+
+    def action_get_product_html_details(self):
+        for product in self:
+            if not product.html_datasheet and product.response_text:
+                try:
+                    response_text = ast.literal_eval(product.response_text)
+                    if isinstance(response_text, dict):
+                        it_product = response_text.get('product', [])
+                        if len(it_product) == 1:
+                            html_datasheet = it_product[0].get('standardHtmlDatasheet', '')
+                            if html_datasheet:
+                                product.html_datasheet = html_datasheet
+                except Exception as e:
+                    _logger.error(f"HTML Error: {e}")
 
     def action_get_product_details(self):
         product_id = self.env['product.product'].search([('product_tmpl_id', '=', self.id)])
