@@ -7,6 +7,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     sequence_number = fields.Char(required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
+    digital_invoice = fields.Boolean(default=False, string="Digitale Rechnung")
 
     @api.model
     def create(self, vals):
