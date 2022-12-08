@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">view_move_form.inherit.nkm</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@id='header_right_group']" position="inside">
+                <label for="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', True)]}"
+                       string="Digitale Rechnung"/>
+                <field name="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', True)]}" class="oe_inline"
+                       nolabel="1" widget="boolean_toggle"/>
+                <label for="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', False)]}"
+                       string="Digitale Rechnung" style="color:red"/>
+                <field name="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', False)]}" class="oe_inline"
+                       nolabel="1" widget="boolean_toggle"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

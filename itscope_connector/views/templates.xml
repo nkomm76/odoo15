@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_itscope_description" inherit_id="website_sale.product" customize_show="True"
+              name="ITScope Datasheet">
+        <xpath expr="//div[@itemscope='itemscope']" position="inside">
+            <section class="s_faq_collapse pt32 pb32">
+                <div class="container">
+                    <div id="myCollapse" class="accordion" role="tablist">
+                        <div class="card bg-white" data-name="Item">
+                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false"
+                               class="collapsed card-header" data-target="#collapse1">
+                                <b>Produktdetails</b>
+                            </a>
+                            <div id="collapse1" class="collapse" data-parent="#myCollapse" role="tabpanel">
+                                <div class="card-body" >
+                                    <div t-if="product.html_datasheet" class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item"
+                                                t-att-src="product.html_datasheet"
+                                                allowfullscreen=""/>
+                                    </div>
+                                    <div t-else="">
+                                        Produktbeschreibung nicht verfügbar
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white" data-name="Item">
+                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false"
+                               class="collapsed card-header" data-target="#collapse2">
+                                <b>Downloads</b>
+                            </a>
+                            <div id="collapse2" class="collapse" data-parent="#myCollapse" role="tabpanel">
+                                <div class="card-body">
+                                        <a target='_blank' t-if="product.pdf_datasheet" class="text-decoration-none"
+                                           t-attf-href='/web/content/product.template/#{product.id}/pdf_datasheet?download=true'>
+                                            <span class="oe_attachment_embedded o_image" data-mimetype="application/pdf" role="img"
+                                                 t-att-aria-label="product.name_pdf_datasheet"
+                                                 t-att-title="product.name_pdf_datasheet"/>
+                                            <span class="oe_attachment_name" style="vertical-align: top;">
+                                                <t t-esc="product.name_pdf_datasheet"/>
+                                            </span>
+                                        </a>
+                                    <div t-else="">
+                                        Produktdatenblatt nicht verfügbar
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+</odoo>
