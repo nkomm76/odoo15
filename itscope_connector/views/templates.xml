@@ -2,7 +2,7 @@
 <odoo>
     <template id="product_itscope_description" inherit_id="website_sale.product" customize_show="True"
               name="ITScope Datasheet">
-        <xpath expr="//div[@t-field='product.website_description']" position="before">
+        <xpath expr="//div[@itemscope='itemscope']" position="inside">
             <section class="s_faq_collapse pt32 pb32">
                 <div class="container">
                     <div id="myCollapse" class="accordion" role="tablist">
