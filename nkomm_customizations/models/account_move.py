@@ -23,6 +23,8 @@ class AccountMove(models.Model):
             if record.partner_id:
                 data = record.l10n_de_template_data
                 data.append((_("Kundennummer"), record.partner_id.sequence_number))
+                if record.move_type == 'out_refund':
+                    data = [tup for tup in data if tup[0] not in ('Fälligkeit', 'Due Date')]
                 record.l10n_de_template_data = data
         return res
 
