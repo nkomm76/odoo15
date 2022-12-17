@@ -28,6 +28,7 @@
     'data': [
         'data/ir_sequence_data.xml',
         'data/data.xml',
+        'views/ir_qweb.xml',
         'report/report_invoice.xml',
         'report/sale_report_templates.xml',
         'report/purchase_quotation_templates.xml',

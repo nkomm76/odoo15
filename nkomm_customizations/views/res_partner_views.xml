@@ -13,6 +13,16 @@
             <xpath expr="//span[@name='address_name']" position="before">
                 <field name="sequence_number" string="Customer Number"/>
             </xpath>
+            <xpath expr="//field[@name='title']" position="replace"/>
+            <xpath expr="//field[@id='individual']" position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister" attrs="{'invisible': [('is_company', '=', True)]}"/>
+                <span attrs="{'invisible': [('is_company','=', True)]}">.</span>
+                <field attrs="{'invisible': [('is_company','=', True)]}" class="ml-1" name="first_name" placeholder="Vorname"/>
+                <field attrs="{'invisible': [('is_company','=', True)]}" class="ml-2" name="last_name" placeholder="Nachname"/>
+            </xpath>
         </field>
     </record>
 

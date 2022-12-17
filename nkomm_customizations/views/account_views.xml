@@ -21,4 +21,17 @@
 
         </field>
     </record>
+
+    <record id="nko_view_invoice_tree" model="ir.ui.view">
+        <field name="name">nko.inherit.view_invoice_tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='amount_total_signed']" position="after">
+                <field name="digital_invoice" widget="boolean_toggle" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
 </odoo>
