@@ -6,7 +6,7 @@ from odoo import api, fields, models, _
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    sequence_number = fields.Char(required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
+    sequence_number = fields.Char(required=True, copy=False, readonly=False, index=True, default=lambda self: _('New'))
     digital_invoice = fields.Boolean(default=False, string="Digitale Rechnung")
     first_name = fields.Char(string='Vorname')
     last_name = fields.Char(string='Nachname')
