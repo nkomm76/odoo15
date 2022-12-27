@@ -14,7 +14,7 @@ class SaleOrder(models.Model):
     @api.model
     def create(self, vals):
         order = super(SaleOrder, self).create(vals)
-        if not vals['start_subscription_on'] and any(line.product_id.recurring_invoice for line in order.order_line):
+        if 'start_subscription_on' in vals and not vals['start_subscription_on'] and any(line.product_id.recurring_invoice for line in order.order_line):
             raise ValidationError("Bitte fügen Sie das Datum des Vertragsbeginns für die Abonnementprodukte hinzu.")
         else:
             return order
