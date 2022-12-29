@@ -8,15 +8,16 @@
     'depends': [
         'website_sale',
         'sale_management',
+        'payment',
     ],
     'data': [
         'views/website_sale_templates.xml',
         'views/sale_order_views.xml',
     ],
     'assets': {
-            'web.assets_frontend': [
-                'website_sale_extend/static/src/js/attachment.js',
-            ],
+        'web.assets_frontend': [
+            'website_sale_extend/static/src/js/attachment.js',
+        ],
     },
     'installable': True,
     'application': False,

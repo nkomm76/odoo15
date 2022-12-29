@@ -16,15 +16,23 @@ class WebsiteSaleFilesUpload(WebsiteSale):
         for file in files:
             attachment_ids = request.env['ir.attachment']
             name = file.filename
-            file = post.get('attachment')
             attachment = file.read()
-            attachment_ids.sudo().create({
-                'name': name,
-                'is_temporary': True,
-                'res_name': name,
-                'type': 'binary',
-                'res_model': 'sale.order',
-                'res_id': order.id,
-                'datas': base64.b64encode(attachment),
-            })
+            if attachment:
+                attachment_ids.sudo().create({
+                    'name': name,
+                    'is_temporary': True,
+                    'res_name': name,
+                    'type': 'binary',
+                    'res_model': 'sale.order',
+                    'res_id': order.id,
+                    'datas': base64.b64encode(attachment),
+                })
         return request.redirect("/shop/payment")
+
+    @http.route(['/shop/attachment/delete'], type='json', auth="public", methods=['POST'], website=True, csrf=False)
+    def delete_attachment(self, attachment_id, **kw):
+        removed = False
+        order = request.website.sale_get_order()
+        if attachment_id:
+            removed = request.env['ir.attachment'].browse(int(attachment_id)).unlink()
+        return {'removed': removed, 'attachment_count': order.attachment_count}

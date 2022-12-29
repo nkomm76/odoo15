@@ -1,35 +1,54 @@
-odoo.define('website_sale_extend.checkout_form', function (require) {
+odoo.define('website_sale_extend.website_sale_attachments', function (require) {
 'use strict';
 
-var website_sale = require('payment.checkout_form');
-var publicWidget = require('web.public.widget');
-const wUtils = require('website.utils');
+    var publicWidget = require('web.public.widget');
+    const wUtils = require('website.utils');
+    var WebsiteSale = require('website_sale.website_sale');
 
-publicWidget.registry.PaymentCheckoutForm.include({
+    publicWidget.registry.WebsiteSale.include({
 
-    /**
-     * Open a modal if attachments are not uploaded
-     * @override
-     */
-    _onClickPay: async function (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
+        events: _.extend({}, WebsiteSale.events, {
+            'click .js_delete_attachment': '_onClickDeleteAttachment',
+        }),
 
-        var $attachments = $('input[name="attachment_count"]');
-        if (parseInt($attachments.val()) === 0){
-            $('#sale_attachment_warning').modal('show');
-        }else{
-            return this._super(...arguments);
-        }
-    },
-});
-
-});
-
-const btn = document.getElementById('add_attachment');
-if(btn){
-    btn.addEventListener('click', () => {
-      $('#add_sale_attachment').modal('hide');
+        _onClickDeleteAttachment: async function (ev){
+            ev.preventDefault();
+            var attachment_id = ev.currentTarget.getAttribute('data');
+            this._rpc({
+                route: "/shop/attachment/delete",
+                params: {
+                    attachment_id: attachment_id,
+                },
+            }).then(function (data) {
+                if (data){
+                        debugger
+                    $(ev.currentTarget).closest('div').find('input[name="attachment_count"]').val(data.attachment_count)
+                    if (data.removed && data.attachment_count === 0){
+                        $(ev.currentTarget).closest('table').remove()
+                    }else{
+                        $(ev.currentTarget).closest('tr').remove()
+                    }
+                }
+            });
+        },
     });
-}
+});
+
+odoo.define('website_sale_extend.website_order_attachment_popup', function (require) {
+'use strict';
+
+    var publicWidget = require('web.public.widget');
+    const wUtils = require('website.utils');
+    publicWidget.registry.websiteOrderAttachmentsPopup = publicWidget.Widget.extend({
+        selector: '.attachment_modal_form',
+        events: {
+            'click #add_attachment': '_onClickAddAttachment',
+        },
+
+        _onClickAddAttachment: async function (ev){
+            $('#add_sale_attachment').modal('hide');
+        },
+    });
+    return publicWidget.registry.websiteOrderAttachmentsPopup
+});
 

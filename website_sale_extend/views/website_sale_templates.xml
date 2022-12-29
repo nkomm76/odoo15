@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <template id="payment_add_files" name="Upload Files" inherit_id="website_sale.payment">
         <xpath expr="//div[@id='payment_method']" position="before">
             <div>
@@ -35,15 +34,13 @@
                                     <t t-esc="line.name"/>
                                 </td>
                                 <td class="td-action">
-                                    <!--TODO: Add remove code-->
-<!--                                    <form id="remove_attachment" method="POST" action="/shop/remove_attachment">-->
-                                        <a href='#' aria-label="Remove from attachments" title="Remove from Attachments"
-                                           class='js_delete_attachment no-decoration'>
-                                            <small>
-                                                <i class='fa fa-trash-o'/>
-                                            </small>
-                                        </a>
-<!--                                    </form>-->
+                                    <a href='#' name="js_delete_attachment" t-attf-data="{{line.id}}"
+                                       aria-label="Remove from attachments" title="Remove from Attachments"
+                                       class='js_delete_attachment no-decoration'>
+                                        <small>
+                                            <i class='fa fa-trash-o'/>
+                                        </small>
+                                    </a>
                                 </td>
                             </tr>
                         </t>
@@ -51,7 +48,7 @@
                 </table>
             </div>
             <div id="add_sale_attachment" role="dialog" class="modal fade">
-                <div class="modal-dialog">
+                <div class="modal-dialog attachment_modal_form">
                     <form id="add_attachments" method="POST" action="/shop/add_attachment" class="modal-content"
                           enctype="multipart/form-data">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -89,7 +86,7 @@
                             <p>Bitte fügen Sie mindestens einen Anhang bei.</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button"  data-dismiss="modal" class="btn btn-primary">Ok</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
                         </div>
                     </div>
                 </div>
