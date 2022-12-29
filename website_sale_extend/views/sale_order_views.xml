@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_delete_other_attachments" class="oe_highlight" states="sale,done,cancel" type="object" string="Andere Anhänge löschen"/>
+                <button name="action_delete_other_attachments" attrs="{'invisible': ['|', ('attachments', '=', [])]}" class="oe_highlight" states="sale,done,cancel" type="object" string="Andere Anhänge löschen"/>
             </xpath>
             <div name="button_box" position="inside">
                 <field name="attachments" invisible="1"/>
