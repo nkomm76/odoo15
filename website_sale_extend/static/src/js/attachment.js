@@ -3,13 +3,31 @@ odoo.define('website_sale_extend.website_sale_attachments', function (require) {
 
     var publicWidget = require('web.public.widget');
     const wUtils = require('website.utils');
-    var WebsiteSale = require('website_sale.website_sale');
 
-    publicWidget.registry.WebsiteSale.include({
+    publicWidget.registry.PaymentCheckoutForm.include({
 
-        events: _.extend({}, WebsiteSale.events, {
+        /**
+         * Open a modal if attachments are not uploaded
+         * @override
+         */
+        _onClickPay: async function (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+
+            var $attachments = $('input[name="attachment_count"]');
+            if (parseInt($attachments.val()) === 0){
+                $('#sale_attachment_warning').modal('show');
+            }else{
+                return this._super(...arguments);
+            }
+        },
+    });
+
+    publicWidget.registry.websiteOrderAttachments = publicWidget.Widget.extend({
+        selector: '.oe_website_sale',
+        events: {
             'click .js_delete_attachment': '_onClickDeleteAttachment',
-        }),
+        },
 
         _onClickDeleteAttachment: async function (ev){
             ev.preventDefault();
@@ -32,6 +50,7 @@ odoo.define('website_sale_extend.website_sale_attachments', function (require) {
             });
         },
     });
+    return publicWidget.registry.websiteOrderAttachments
 });
 
 odoo.define('website_sale_extend.website_order_attachment_popup', function (require) {

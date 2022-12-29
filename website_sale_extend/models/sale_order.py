@@ -13,14 +13,14 @@ class SaleOrder(models.Model):
         """Compute the number of attachments"""
         for order in self:
             attachments = self.env['ir.attachment'].search(
-                [('res_model', '=', 'sale.order'), ('res_id', '=', order.id)])
+                [('res_model', '=', 'sale.order'), ('res_id', '=', order.id), ('is_temporary', '=', True)])
             order.attachments = attachments.ids
             order.attachment_count = len(attachments)
 
     def action_show_attachments(self):
         """View Attachment"""
         return {
-            'name': _('Attachments'),
+            'name': _('Other Attachments'),
             'view_mode': 'kanban,form',
             'res_model': 'ir.attachment',
             'type': 'ir.actions.act_window',
