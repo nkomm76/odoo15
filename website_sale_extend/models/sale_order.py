@@ -26,3 +26,8 @@ class SaleOrder(models.Model):
             'type': 'ir.actions.act_window',
             'domain': [('res_model', '=', 'sale.order'), ('res_id', '=', self.id), ('is_temporary', '=', True)]
         }
+
+    def action_delete_other_attachments(self):
+        for order in self:
+            if order.attachments:
+                order.attachments.unlink()

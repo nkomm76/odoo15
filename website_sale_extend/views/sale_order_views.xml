@@ -5,8 +5,12 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_delete_other_attachments" class="oe_highlight" states="sale,done,cancel" type="object" string="Delete Other Attachments"/>
+            </xpath>
             <div name="button_box" position="inside">
-                <button class="oe_stat_button" type="object" name="action_show_attachments" icon="fa-arrow-right">
+                <field name="attachments" invisible="1"/>
+                <button attrs="{'invisible': [('attachments', '=', [])]}" class="oe_stat_button" type="object" name="action_show_attachments" icon="fa-arrow-right">
                     <field string="Attachments" name="attachment_count" widget="statinfo"/>
                 </button>
             </div>

@@ -39,7 +39,6 @@ odoo.define('website_sale_extend.website_sale_attachments', function (require) {
                 },
             }).then(function (data) {
                 if (data){
-                        debugger
                     $(ev.currentTarget).closest('div').find('input[name="attachment_count"]').val(data.attachment_count)
                     if (data.removed && data.attachment_count === 0){
                         $(ev.currentTarget).closest('table').remove()
@@ -65,7 +64,18 @@ odoo.define('website_sale_extend.website_order_attachment_popup', function (requ
         },
 
         _onClickAddAttachment: async function (ev){
-            $('#add_sale_attachment').modal('hide');
+            var types = ['image/jpg', 'image/jpeg', 'image/png' ,'application/pdf']
+            var $uploadedFiles = $('#attachments').prop('files')
+            for (const file of $uploadedFiles) {
+                if (types.includes(file.type) === false){
+                    $('#attachment_extension_warning').modal('show');
+                    ev.stopPropagation();
+                    ev.preventDefault();
+                }else{
+                    $('#add_sale_attachment').modal('hide');
+                }
+              }
+
         },
     });
     return publicWidget.registry.websiteOrderAttachmentsPopup
