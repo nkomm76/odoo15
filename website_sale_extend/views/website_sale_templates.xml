@@ -53,13 +53,15 @@
                           enctype="multipart/form-data">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <div class="modal-header">
-
                             <h4 class="modal-title">
                                 Anhänge hinzufügen!
                             </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">&amp;times;</span>
+                            </button>
                         </div>
                         <div class="modal-body">
-                            <input type="file" name="attachment" class="o_input_file" data-show-upload="true"
+                            <input type="file" name="attachment" id="attachments" class="o_input_file" data-show-upload="true"
                                    data-show-caption="true" lass="file" accept="image/*,application/pdf"
                                    multiple="multiple"/>
                         </div>
@@ -84,6 +86,25 @@
                         </div>
                         <div class="modal-body">
                             <p>Bitte fügen Sie mindestens einen Anhang bei.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="attachment_extension_warning" role="dialog" class="modal fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Erweiterungs warnung!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">&amp;times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Eine oder mehrere Dateierweiterungen stimmen nicht mit den
+                                akzeptierten Dateierweiterungen (jpg, jpeg, png, pdf) überein.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
