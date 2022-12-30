@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="payment_add_files" name="Upload Files" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='payment_method']" position="before">
+            <div>
+                <button name="o_add_attachment_button"
+                        type="submit"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#add_sale_attachment"
+                        data-icon-class="fa-chevron-right">
+                    Anhänge hinzufügen
+                </button>
+                <input type="hidden" name="attachment_count" t-attf-value="{{len(website_sale_order.attachments)}}"/>
+                <table class="mb16 table table-striped table-sm mt-3"
+                       t-if="website_sale_order and website_sale_order.attachments">
+                    <thead>
+                        <tr>
+                            <th class="td-img">Pos.</th>
+                            <th/>
+                            <th class="text-left td-qty">
+                                Name
+                            </th>
+                            <th class="text-center td-action"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="website_sale_order.attachments" t-as="line">
+                            <tr>
+                                <td colspan="2" class='td-img'>
+                                    <t t-esc="line_index+1"/>
+                                </td>
+                                <td align="left">
+                                    <t t-esc="line.name"/>
+                                </td>
+                                <td class="td-action">
+                                    <a href='#' name="js_delete_attachment" t-attf-data="{{line.id}}"
+                                       aria-label="Remove from attachments" title="Remove from Attachments"
+                                       class='js_delete_attachment no-decoration'>
+                                        <small>
+                                            <i class='fa fa-trash-o'/>
+                                        </small>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+            <div id="add_sale_attachment" role="dialog" class="modal fade">
+                <div class="modal-dialog attachment_modal_form">
+                    <form id="add_attachments" method="POST" action="/shop/add_attachment" class="modal-content"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Anhänge hinzufügen!
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">&amp;times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="file" name="attachment" id="attachments" class="o_input_file" data-show-upload="true"
+                                   data-show-caption="true" lass="file" accept="image/*,application/pdf"
+                                   multiple="multiple"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit"
+                                    class="btn btn-primary"
+                                    id="add_attachment">
+                                Hochladen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="sale_attachment_warning" role="dialog" class="modal fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Anhang erforderlich!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">&amp;times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Bitte fügen Sie mindestens einen Anhang bei.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="attachment_extension_warning" role="dialog" class="modal fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Erweiterungs warnung!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">&amp;times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Eine oder mehrere Dateierweiterungen stimmen nicht mit den
+                                akzeptierten Dateierweiterungen (jpg, jpeg, png, pdf) überein.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
