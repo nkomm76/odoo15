@@ -25,7 +25,7 @@ class ResPartner(models.Model):
     def _get_contact_name(self, partner, name):
         if partner.title:
             name = f"\n{partner.title.name} {name}"
-        return "%s, %s" % (partner.commercial_company_name or partner.sudo().parent_id.name, name)
+        return "%s %s" % (partner.commercial_company_name or partner.sudo().parent_id.name, name)
 
     @api.onchange('is_company')
     def _onchange_contact_is_company(self):
