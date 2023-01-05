@@ -136,18 +136,18 @@ class ProductProduct(models.Model):
                 supplier_item_stock = supplier_item_dict.get('stock', '')
 
                 # Create or get partner
-                partner_id = self.create_or_get_company(supplier_item_dict)
-                if partner_id:
-                    supplier_vals = {
-                        'min_qty': 1,
-                        'name': partner_id.id,
-                        'product_name': supplier_item_dict.get('productName', ''),
-                        'price': float(supplier_item_dict.get('price', 0)),
-                        'product_tmpl_id': self.product_tmpl_id.id,
-                    }
-
-                    # Create Supplier Item
-                    self.env['product.supplierinfo'].sudo().create(supplier_vals)
+                # partner_id = self.create_or_get_company(supplier_item_dict)
+                # if partner_id:
+                #     supplier_vals = {
+                #         'min_qty': 1,
+                #         'name': partner_id.id,
+                #         'product_name': supplier_item_dict.get('productName', ''),
+                #         'price': float(supplier_item_dict.get('price', 0)),
+                #         'product_tmpl_id': self.product_tmpl_id.id,
+                #     }
+                #
+                #     # Create Supplier Item
+                #     self.env['product.supplierinfo'].sudo().create(supplier_vals)
 
             last_updated = fields.Datetime.now()
             product_details = {
