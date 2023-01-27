@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sftp_connection,access.sftp.connection,model_sftp_connection,base.group_user,1,1,1,1
+access_sftp_export_template,access.sftp.export.template,model_sftp_export_template,,1,1,1,1
+access_log_book,access.log.book,model_log_book,,1,1,1,1
