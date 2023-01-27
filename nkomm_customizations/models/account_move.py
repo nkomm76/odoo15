@@ -34,6 +34,8 @@ class AccountMove(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
+    name = fields.Text(string='Label', tracking=True)
+
     def _get_computed_name(self):
         self.ensure_one()
 
