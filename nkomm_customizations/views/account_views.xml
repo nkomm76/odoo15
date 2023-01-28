@@ -18,6 +18,9 @@
                 <field name="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', False)]}" class="oe_inline"
                        nolabel="1" widget="boolean_toggle"/>
             </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']//tree/field[@name='name']" position="attributes">
+                <attribute name="widget">html</attribute>
+            </xpath>
 
         </field>
     </record>

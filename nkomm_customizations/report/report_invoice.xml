@@ -25,10 +25,11 @@
                 <td name="account_invoice_line_name">
                     <t t-if="'!!' in line.name">
                         <t t-set="product_name" t-value="line.name.split('!!')[0]"/>
+                        <t t-if="'&lt;p&gt;' in product_name" t-set="product_name" t-value="product_name.replace('&lt;p&gt;', '')"/>
                         <t t-set="product_desc" t-value="line.name.split('!!')[1]"/>
                         <span class="font-weight-bold" t-esc="product_name"/>
                         <br/>
-                        <span t-esc="product_desc"/>
+                        <span t-esc="product_desc" t-options='{"widget": "html"}'/>
                     </t>
                     <t t-else="">
                         <span t-field="line.name" t-options="{'widget': 'text'}"/>
