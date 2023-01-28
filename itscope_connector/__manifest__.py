@@ -19,7 +19,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'product', 'website_sale'],
-    'external_dependencies': {'python': ['pycountry']},
+    # 'external_dependencies': {'python': ['pycountry']},
 
     # always loaded
     'data': [
