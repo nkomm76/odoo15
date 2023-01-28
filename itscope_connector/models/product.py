@@ -5,7 +5,7 @@ import ast
 import requests
 import logging
 import base64
-import pycountry
+# import pycountry
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -177,50 +177,50 @@ class ProductProduct(models.Model):
             _logger.info("ITscope Message: " + message)
             return self.show_message(message)
 
-    def create_or_get_company(self, supplier_item_dict=None):
-        """If Partner already exists return partner if not create and return partner"""
-        partner_exists = self.env['res.partner'].sudo().search(
-            [('itscope_supplier_id', '=', supplier_item_dict.get('supplierId', ''))])
-
-        if partner_exists:
-            return partner_exists
-
-        url = f"{self.env.company.base_url}/company/distributor/company.json"
-        json_response = self.get_request_response(url)
-        company_list = json_response.get('company', [])
-        message = json_response.get('message', [])
-
-        partner_id = self.env['res.partner'].sudo()
-        if company_list and not partner_id:
-            supplier = next(item for item in company_list if item.get('supplier', '').get('id', '') == supplier_item_dict.get('supplierId', ''))
-            if supplier:
-                country_id = False
-                code = supplier.get('country')
-                if code and len(code) > 2:
-                    country_data = pycountry.countries.get(alpha_3=code)
-                    if country_data:
-                        code = country_data.alpha_2
-                country = self.env['res.country'].sudo().search([('code', '=', code)])
-                if country:
-                    country_id = country.id
-
-                partner_vals = {
-                    'company_type': 'company',
-                    'name': supplier.get('name', ''),
-                    'street': supplier.get('street', ''),
-                    'zip': supplier.get('zip', ''),
-                    'city': supplier.get('city', ''),
-                    'country_id': country_id,
-                    'itscope_supplier_id': supplier_item_dict.get('supplierId', ''),
-                }
-                partner = self.env['res.partner'].sudo().create(partner_vals)
-                if partner:
-                    partner_id = partner
-            return partner_id
-
-        else:
-            _logger.info("ITscope Message: " + message)
-            return partner_id
+    # def create_or_get_company(self, supplier_item_dict=None):
+    #     """If Partner already exists return partner if not create and return partner"""
+    #     partner_exists = self.env['res.partner'].sudo().search(
+    #         [('itscope_supplier_id', '=', supplier_item_dict.get('supplierId', ''))])
+    #
+    #     if partner_exists:
+    #         return partner_exists
+    #
+    #     url = f"{self.env.company.base_url}/company/distributor/company.json"
+    #     json_response = self.get_request_response(url)
+    #     company_list = json_response.get('company', [])
+    #     message = json_response.get('message', [])
+    #
+    #     partner_id = self.env['res.partner'].sudo()
+    #     if company_list and not partner_id:
+    #         supplier = next(item for item in company_list if item.get('supplier', '').get('id', '') == supplier_item_dict.get('supplierId', ''))
+    #         if supplier:
+    #             country_id = False
+    #             code = supplier.get('country')
+    #             if code and len(code) > 2:
+    #                 country_data = pycountry.countries.get(alpha_3=code)
+    #                 if country_data:
+    #                     code = country_data.alpha_2
+    #             country = self.env['res.country'].sudo().search([('code', '=', code)])
+    #             if country:
+    #                 country_id = country.id
+    #
+    #             partner_vals = {
+    #                 'company_type': 'company',
+    #                 'name': supplier.get('name', ''),
+    #                 'street': supplier.get('street', ''),
+    #                 'zip': supplier.get('zip', ''),
+    #                 'city': supplier.get('city', ''),
+    #                 'country_id': country_id,
+    #                 'itscope_supplier_id': supplier_item_dict.get('supplierId', ''),
+    #             }
+    #             partner = self.env['res.partner'].sudo().create(partner_vals)
+    #             if partner:
+    #                 partner_id = partner
+    #         return partner_id
+    #
+    #     else:
+    #         _logger.info("ITscope Message: " + message)
+    #         return partner_id
 
     def show_message(self, message):
         """Show the message in wizard"""
