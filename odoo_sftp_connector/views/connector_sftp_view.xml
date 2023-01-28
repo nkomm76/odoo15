@@ -44,7 +44,7 @@
                             </group>
                             <group name="connection_data">
                                 <field name="username"/>
-                                <field name="password"/>
+                                <field name="password" password="True"/>
                             </group>
                         </group>
                         <notebook>

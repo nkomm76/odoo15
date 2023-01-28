@@ -122,7 +122,7 @@ class SFTPModelTemplate(models.Model):
                 state = 'done'
 
             log_book_vals = {
-                'name': 'Book_'+start_of_day.strftime('%Y_%m_%d'),
+                'name': 'Log_Book_'+start_of_day.strftime('%Y_%m_%d'),
                 'state': state,
                 'template_id': self.id,
                 'date': fields.datetime.now(),

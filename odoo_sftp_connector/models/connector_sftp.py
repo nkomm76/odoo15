@@ -25,9 +25,9 @@ class SFTPConnection(models.Model):
 
     message = fields.Text('Message', tracking=True)
     kanban_state = fields.Selection([
-        ('normal', 'Not Set'),
-        ('done', 'Pass'),
-        ('blocked', 'Fail')], string='Test State',
+        ('normal', 'Not Connected'),
+        ('done', 'Connected'),
+        ('blocked', 'Failed')], string='Status',
         copy=False, default='normal', readonly=1, tracking=True)
 
     active = fields.Boolean(default=True)
