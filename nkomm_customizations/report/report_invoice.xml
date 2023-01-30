@@ -25,16 +25,23 @@
                 <td name="account_invoice_line_name">
                     <t t-if="'!!' in line.name">
                         <t t-set="product_name" t-value="line.name.split('!!')[0]"/>
-                        <t t-if="'&lt;p&gt;' in product_name" t-set="product_name" t-value="product_name.replace('&lt;p&gt;', '')"/>
                         <t t-set="product_desc" t-value="line.name.split('!!')[1]"/>
-                        <span class="font-weight-bold" t-esc="product_name"/>
+                        <span class="font-weight-bold" t-esc="product_name" t-options='{"widget": "html"}'/>
                         <br/>
                         <span t-esc="product_desc" t-options='{"widget": "html"}'/>
                     </t>
                     <t t-else="">
-                        <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                        <span t-field="line.name" t-options="{'widget': 'html'}"/>
                     </t>
                 </td>
+            </xpath>
+
+            <xpath expr="//t[@t-foreach='lines']/tr/t[2]/td/span" position="attributes">
+                <attribute name="t-options">{"widget": "html"}</attribute>
+            </xpath>
+
+            <xpath expr="//t[@t-foreach='lines']/tr/t[3]/td/span" position="attributes">
+                <attribute name="t-options">{"widget": "html"}</attribute>
             </xpath>
 
             <xpath expr="//span[@t-field='line.product_uom_id']" position="replace"/>
