@@ -1,0 +1,591 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_sftp_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-02 07:55+0000\n"
+"PO-Revision-Date: 2023-02-02 07:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_sftp_connector
+#: model:ir.ui.menu,name:odoo_sftp_connector.menu_api_section
+msgid "API section"
+msgstr "API-Bereich"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_needaction
+msgid "Action Needed"
+msgstr "Handlungsbedarf"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__active
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__cron_active
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "Active Connections"
+msgstr "Aktiv Verbindungen"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_ids
+msgid "Activities"
+msgstr "Aktivitäten"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Aktivitätsausnahme-Dekoration"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_state
+msgid "Activity State"
+msgstr "Aktivitätsstatus"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Aktivitätstyp-Symbol"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.actions.act_window,help:odoo_sftp_connector.connector_sftp_action
+msgid "Add a new SFTP source"
+msgstr "Fügen Sie eine neue SFTP-Quelle hinzu"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_form
+msgid "Archived"
+msgstr "Archiviert"
+
+#. module: odoo_sftp_connector
+#: model:ir.model,name:odoo_sftp_connector.model_ir_attachment
+msgid "Attachment"
+msgstr "Dateianhang"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_attachment_count
+msgid "Attachment Count"
+msgstr "Anzahl der Anhänge"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__client
+msgid "Client"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_connection__kanban_state__done
+msgid "Connected"
+msgstr "Klient"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_form
+msgid "Connection Name..."
+msgstr "Verbindungsname..."
+
+#. module: odoo_sftp_connector
+#: model:ir.model.constraint,message:odoo_sftp_connector.constraint_sftp_connection_name_uniq
+msgid "Connection name must be unique."
+msgstr "Der Verbindungsname muss eindeutig sein."
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__private_key
+msgid "Copy your private key here!"
+msgstr "Kopieren Sie hier Ihren privaten Schlüssel!"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__create_uid
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__create_uid
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__create_date
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__create_date
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_export_template__interval_type__days
+msgid "Days"
+msgstr "Tage"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__display_name
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__display_name
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__log_book__state__done
+msgid "Done"
+msgstr "Getan"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_export_template__path
+msgid "Enter Sftp Folder Name here"
+msgstr "Geben Sie hier den Sftp-Ordnernamen ein"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Execute Every"
+msgstr "Alle ausführen"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.log_book_view_form
+msgid "Export Data to SFTP"
+msgstr "Daten nach SFTP exportieren"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Export to SFTP"
+msgstr "Nach SFTP exportieren"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__log_book__state__fail
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_connection__kanban_state__blocked
+msgid "Failed"
+msgstr "Gescheitert"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_ir_attachment__file_sent
+msgid "File Sent?"
+msgstr "Datei abgeschickt?"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_follower_ids
+msgid "Followers"
+msgstr "Anhänger"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Followers (Partner)"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Schriftart tolles Symbol z.B. fa-aufgaben"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "Group By"
+msgstr "Gruppiere nach"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__has_message
+msgid "Has Message"
+msgstr "Hat Nachricht"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__host
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "Host"
+msgstr "Gastgeber"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__host_key
+msgid "Host Key"
+msgstr "Host-Schlüssel"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_export_template__interval_type__hours
+msgid "Hours"
+msgstr "Std"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__id
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__id
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_exception_icon
+msgid "Icon"
+msgstr "Icon"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_needaction
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_has_error
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__ignore_host_key
+msgid "Ignore Host Key"
+msgstr "Hostschlüssel ignorieren"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__interval_number
+msgid "Interval Number"
+msgstr "Intervallnummer"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__interval_type
+msgid "Interval Type"
+msgstr "Intervalltyp"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_account_bank_statement_line__invoice_sent
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_account_move__invoice_sent
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_account_payment__invoice_sent
+msgid "Invoice Sent?"
+msgstr "Rechnung versandt?"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model,name:odoo_sftp_connector.model_account_move
+msgid "Journal Entry"
+msgstr "Buchungssatz"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_form
+msgid "Keys"
+msgstr "Schlüssel"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book____last_update
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection____last_update
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__write_uid
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__write_uid
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__write_date
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__write_date
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.actions.act_window,name:odoo_sftp_connector.log_book_action
+#: model:ir.model,name:odoo_sftp_connector.model_log_book
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__log_book_id
+#: model:ir.ui.menu,name:odoo_sftp_connector.shopify_mismatch_ept
+msgid "Log Book"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Log Books"
+msgstr "Logbuch"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.log_book_view_form
+msgid "Log Books Lines"
+msgstr "Logbuchzeilen"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Hauptanhang"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message
+msgid "Message"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_export_template__interval_type__minutes
+msgid "Minutes"
+msgstr "Protokoll"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__model_name
+msgid "Model Name"
+msgstr "Modellname"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_export_template__interval_type__months
+msgid "Months"
+msgstr "Monate"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__name
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__name
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__name
+msgid "Name"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_connection__kanban_state__normal
+msgid "Not Connected"
+msgstr "Nicht verbunden"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Anzahl der Aktionen"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_has_error_counter
+msgid "Number of errors"
+msgstr "Anzahl der Fehler"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__log_book__state__partial
+msgid "Partial"
+msgstr "Teilweise"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__password
+msgid "Password"
+msgstr "Passwort"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__port
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "Port"
+msgstr "Hafen"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__private_key
+msgid "Private Key"
+msgstr "Privat Schlüssel"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__activity_user_id
+msgid "Responsible User"
+msgstr "Verantwortlicher Benutzer"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__run_date
+msgid "Run Date"
+msgstr "Ausführungsdatum"
+
+#. module: odoo_sftp_connector
+#: model:ir.model,name:odoo_sftp_connector.model_sftp_connection
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__connector_id
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_form
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "SFTP Connection"
+msgstr "SFTP-Verbindung"
+
+#. module: odoo_sftp_connector
+#: model:ir.actions.act_window,name:odoo_sftp_connector.connector_sftp_action
+#: model:ir.ui.menu,name:odoo_sftp_connector.menu_connector_sftp
+msgid "SFTP Connections"
+msgstr "SFTP-Verbindungen"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_tree
+msgid "SFTP Connectors"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__path
+msgid "SFTP Destination Path"
+msgstr "SFTP-Zielpfad"
+
+#. module: odoo_sftp_connector
+#: model:ir.model,name:odoo_sftp_connector.model_sftp_export_template
+msgid "SFTP Export Template"
+msgstr "SFTP-Exportvorlage"
+
+#. module: odoo_sftp_connector
+#: model:ir.ui.menu,name:odoo_sftp_connector.menu_sftp_export_action
+msgid "SFTP Export Templates"
+msgstr "SFTP-Exportvorlagen"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__cron_id
+msgid "Schedule Action"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Scheduled Action"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.actions.act_window,name:odoo_sftp_connector.sftp_export_action
+msgid "Sftp Export Templates"
+msgstr "Sftp-Exportvorlagen"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "State"
+msgstr "Zustand"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__state
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__kanban_state
+msgid "Status"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__attachment_ids
+msgid "Synced Attachments"
+msgstr "Synchronisierte Anhänge"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__date
+msgid "Synced Date"
+msgstr "Synchronisiertes Datum"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_log_book__template_id
+msgid "Template"
+msgstr "Schablone"
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_form
+msgid "Test Connection"
+msgstr "Testverbindung"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_account_bank_statement_line__invoice_sent
+#: model:ir.model.fields,help:odoo_sftp_connector.field_account_move__invoice_sent
+#: model:ir.model.fields,help:odoo_sftp_connector.field_account_payment__invoice_sent
+msgid "This shows if invoice is sent to SFTP server or not."
+msgstr "Hier wird angezeigt, ob die Rechnung an den SFTP-Server gesendet wird oder nicht."
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_ir_attachment__file_sent
+msgid "This shows if the file is sent to SFTP server or not."
+msgstr "Dies zeigt, ob die Datei an den SFTP-Server gesendet wird oder nicht."
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__transport
+msgid "Transport"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
+msgid "Try export again"
+msgstr "Versuchen Sie erneut, zu exportieren"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__username
+#: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
+msgid "Username"
+msgstr "Nutzername"
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields,help:odoo_sftp_connector.field_sftp_connection__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: odoo_sftp_connector
+#: model:ir.model.fields.selection,name:odoo_sftp_connector.selection__sftp_export_template__interval_type__weeks
+msgid "Weeks"
+msgstr "Wochen"
