@@ -114,6 +114,7 @@ class SFTPModelTemplate(models.Model):
                     else:
                         record.invoice_sent = False
                         record.message_main_attachment_id.file_sent = False
+            if attachments:
                 state = False
                 if any(not rec.message_main_attachment_id.file_sent for rec in records):
                     state = 'partial'
