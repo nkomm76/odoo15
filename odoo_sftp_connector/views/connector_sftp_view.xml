@@ -6,7 +6,7 @@
             <field name="name">sftp.connection.view.tree</field>
             <field name="model">sftp.connection</field>
             <field name="arch" type="xml">
-                <tree string="SFTP Connectors">
+                <tree string="SFTP Connection">
                     <field name="name"/>
                     <field name="host"/>
                     <field name="kanban_state" widget="state_selection" class="ml-auto"/>
@@ -19,7 +19,7 @@
             <field name="name">sftp.connection.view.form</field>
             <field name="model">sftp.connection</field>
             <field name="arch" type="xml">
-                <form string="SFTP Connector">
+                <form string="SFTP Connection">
                     <header>
                         <button name="test_sftp_connection" string="Test Connection" type="object" class="btn-primary"/>
                     </header>
@@ -70,7 +70,7 @@
             <field name="name">sftp.connection.view.search</field>
             <field name="model">sftp.connection</field>
             <field name="arch" type="xml">
-                <search string="SFTP Connectors">
+                <search string="SFTP Connection">
 
                     <field name="name"/>
                     <field name="host"/>
@@ -93,7 +93,7 @@
 
         <!-- New Action -->
         <record id="connector_sftp_action" model="ir.actions.act_window">
-            <field name="name">SFTP Connectors</field>
+            <field name="name">SFTP Connections</field>
             <field name="res_model">sftp.connection</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{"search_default_only_active_records":1}</field>
@@ -112,7 +112,7 @@
 
         <menuitem
                 id="menu_connector_sftp"
-                name="SFTP Connection"
+                name="SFTP Connections"
                 parent="menu_api_section"
                 action="connector_sftp_action"
                 sequence="10"/>

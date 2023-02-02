@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name": "SFTP Connections",
-    "summary": "Provides SFTP Connection settings",
-    "description": "Input the credentials of sftp server to create a connection for data export.",
+    "name": "SFTP Connector",
+    "summary": "Provides Connection with SFTP Server",
+    "description": "User will be able to open a connection with SFTP server and export invoices/Bills/Credit notes to SFTP server",
     "version": "15.0.0",
     "category": "Base",
     "website": "",

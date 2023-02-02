@@ -19,7 +19,7 @@
             <field name="arch" type="xml">
                 <form create="1">
                     <header>
-                        <button name="export_data" string="Export Data to SFTP" type="object" class="btn-primary"/>
+                        <button name="export_data" string="Export to SFTP" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
                         <group>
@@ -56,6 +56,7 @@
                                         <field name="template_id" invisible="1"/>
                                         <field name="date"/>
                                         <field name="state"/>
+                                        <button name="export_data" attrs="{'invisible': [('state', '=', 'done')]}" title="Try export again" class="fa fa-refresh btn btn-primary" type="object"/>
                                     </tree>
                                 </field>
                             </page>

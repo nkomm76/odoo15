@@ -21,8 +21,6 @@ class SFTPModelTemplate(models.Model):
     path = fields.Char(string="SFTP Destination Path",
                        help='Enter Sftp Folder Name here')
     model_name = fields.Many2one('ir.model', string="Model Name")
-    # model_domain = fields.Char(related='model_name.model', string="Model Domain")
-    # domain_set = fields.Char()
     cron_id = fields.Many2one('ir.cron', string='Schedule Action')
     interval_number = fields.Integer(default="1")
     interval_type = fields.Selection(string='Interval Type',
@@ -91,9 +89,12 @@ class SFTPModelTemplate(models.Model):
                         # if self.model_name.model == 'account.move':
                         pdf = self.env.ref('account.account_invoices').sudo()._render_qweb_pdf(
                             [record.id])[0]
+
+                        # TODO: For Sale orders
                         # elif self.model_name.model == 'sale.order':
                         #     pdf = self.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf(
                         #         [record.id])[0]
+
                         pdf = base64.b64encode(pdf)
                         binary_data = pdf
                     else:
@@ -105,30 +106,30 @@ class SFTPModelTemplate(models.Model):
 
                     base64_file = base64.b64decode(binary_data)
                     pdf_file = BytesIO(base64_file)
-                    status = self.connector_id.send_file(pdf_file, remote_path)
-                    if status:
+                    response = self.connector_id.send_file(pdf_file, remote_path)
+                    if response:
                         attachments.append((4, record.message_main_attachment_id.id))
                         record.invoice_sent = True
                         record.message_main_attachment_id.file_sent = True
                     else:
-                        record.invoice_sent = True
+                        record.invoice_sent = False
                         record.message_main_attachment_id.file_sent = False
-            state = False
-            if any(not rec.message_main_attachment_id.file_sent for rec in records):
-                state = 'partial'
-            if all(not rec.message_main_attachment_id.file_sent for rec in records):
-                state = 'fail'
-            if all(rec.message_main_attachment_id.file_sent for rec in records):
-                state = 'done'
+                state = False
+                if any(not rec.message_main_attachment_id.file_sent for rec in records):
+                    state = 'partial'
+                if all(not rec.message_main_attachment_id.file_sent for rec in records):
+                    state = 'fail'
+                if all(rec.message_main_attachment_id.file_sent for rec in records):
+                    state = 'done'
 
-            log_book_vals = {
-                'name': 'Log_Book_'+start_of_day.strftime('%Y_%m_%d'),
-                'state': state,
-                'template_id': self.id,
-                'date': fields.datetime.now(),
-                'attachment_ids': attachments,
-            }
-            self.env['log.book'].sudo().create(log_book_vals)
+                log_book_vals = {
+                    'name': 'Log_Book_'+start_of_day.strftime('%Y_%m_%d'),
+                    'state': state,
+                    'template_id': self.id,
+                    'date': fields.datetime.now(),
+                    'attachment_ids': attachments,
+                }
+                self.env['log.book'].sudo().create(log_book_vals)
 
     def cron_sftp_update(self, rec_id):
         export_id = self.search([('id', '=', int(rec_id))])
@@ -142,7 +143,6 @@ class LogBook(models.Model):
 
     name = fields.Char(string="Name")
     template_id = fields.Many2one('sftp.export.template', string="Template")
-    # log_book_lines = fields.One2many('log.book.line', 'log_book_id', string="Log Book Lines")
     date = fields.Datetime(string='Synced Date')
     attachment_ids = fields.Many2many('ir.attachment', string='Synced Attachments')
     state = fields.Selection(string='Status',
@@ -151,14 +151,15 @@ class LogBook(models.Model):
                                         ('partial', 'Partial'),
                                         ])
 
-
-# class LogBookLine(models.Model):
-#     _name = 'log.book.line'
-#     _description = "Log Book"
-#
-#     name = fields.Char(string="Name")
-#     log_book_id = fields.Many2one('sftp.export.template', string="Log Book")
-#     state = fields.Selection(string='Status',
-#                              selection=[('success', 'Success'),
-#                                         ('fail', 'Failed'),
-#                                         ])
+    def export_data(self):
+        for attachment in self.attachment_ids.filtered(lambda a: not a.file_sent):
+            if attachment.datas:
+                binary_data = attachment.datas
+                filename = attachment.name
+                remote_path = os.path.join(self.template_id.path, filename)
+                base64_file = base64.b64decode(binary_data)
+                pdf_file = BytesIO(base64_file)
+                if self.template_id and self.template_id.connector_id:
+                    response = self.template_id.connector_id.send_file(pdf_file, remote_path)
+                    if response:
+                        attachment.file_sent = True
