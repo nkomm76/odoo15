@@ -79,7 +79,7 @@ class SFTPModelTemplate(models.Model):
             start_of_day = today.replace(hour=0, minute=0, second=0, microsecond=0)
             end_of_day = today.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-            domain = [('state', '=', 'posted'), ('create_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
+            domain = [('state', '=', 'posted'),('invoice_sent', '=', False), ('create_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
                       ('create_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
             records = self.env[self.model_name.model].search(domain)
             attachments = []
@@ -107,12 +107,15 @@ class SFTPModelTemplate(models.Model):
                     base64_file = base64.b64decode(binary_data)
                     pdf_file = BytesIO(base64_file)
                     response = self.connector_id.send_file(pdf_file, remote_path)
-                    if response:
+                    if isinstance(response, bool):
                         attachments.append((4, record.message_main_attachment_id.id))
                         record.invoice_sent = True
+                        record.message_main_attachment_id.response_message = "File successfully sent."
                         record.message_main_attachment_id.file_sent = True
                     else:
-                        record.invoice_sent = False
+                        record.message_main_attachment_id.response_message = response
+                        attachments.append((4, record.message_main_attachment_id.id))
+                        record.invoice_sent = True
                         record.message_main_attachment_id.file_sent = False
             if attachments:
                 state = False
@@ -162,5 +165,17 @@ class LogBook(models.Model):
                 pdf_file = BytesIO(base64_file)
                 if self.template_id and self.template_id.connector_id:
                     response = self.template_id.connector_id.send_file(pdf_file, remote_path)
-                    if response:
+                    if isinstance(response, bool):
                         attachment.file_sent = True
+                        attachment.response_message = "File successfully recieved."
+                    else:
+                        attachment.file_sent = False
+                        attachment.response_message = response
+        state = False
+        if any(not attachment.file_sent for attachment in self.attachment_ids):
+            state = 'partial'
+        if all(not attachment.file_sent for attachment in self.attachment_ids):
+            state = 'fail'
+        if all(attachment.file_sent for attachment in self.attachment_ids):
+            state = 'done'
+        self.state = state
