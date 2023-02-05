@@ -76,5 +76,5 @@ class SFTPConnection(models.Model):
             _logger.info("File uploaded successfully")
             return True
         except Exception as e:
-            _logger.exception('Exception! Error uploading file' + str(e))
-            return False
+            _logger.exception('Exception! Error uploading file ' + str(e))
+            return 'Exception! Error uploading file ' + str(e)
