@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="connector_sftp_view_tree" model="ir.ui.view">
+            <field name="name">sftp.connection.view.tree</field>
+            <field name="model">sftp.connection</field>
+            <field name="arch" type="xml">
+                <tree string="SFTP Connection">
+                    <field name="name"/>
+                    <field name="host"/>
+                    <field name="kanban_state" widget="state_selection" class="ml-auto"/>
+                    <field name="active" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="connector_sftp_view_form" model="ir.ui.view">
+            <field name="name">sftp.connection.view.form</field>
+            <field name="model">sftp.connection</field>
+            <field name="arch" type="xml">
+                <form string="SFTP Connection">
+                    <header>
+                        <button name="test_sftp_connection" string="Test Connection" type="object" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <field name="active" invisible="1"/>
+                        <div class="oe_button_box" name="button_box">
+                        </div>
+                        <div class="oe_title pr-0">
+                            <span>
+                                <field name="message" readonly="1"/>
+                            </span>
+                            <h1 class="d-flex flex-row justify-content-between">
+                                <field name="name" class="o_task_name text-truncate" placeholder="Connection Name..."/>
+                                <field name="kanban_state" widget="state_selection" class="ml-auto"/>
+                            </h1>
+                        </div>
+                        <group name="data">
+                            <group name="main_data">
+                                <field name="host"/>
+                                <field name="port"/>
+                            </group>
+                            <group name="connection_data">
+                                <field name="username"/>
+                                <field name="password" password="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Keys">
+                                <group>
+                                    <group>
+                                        <field name="private_key"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="connector_sftp_view_search" model="ir.ui.view">
+            <field name="name">sftp.connection.view.search</field>
+            <field name="model">sftp.connection</field>
+            <field name="arch" type="xml">
+                <search string="SFTP Connection">
+
+                    <field name="name"/>
+                    <field name="host"/>
+                    <field name="port"/>
+                    <field name="username"/>
+                    <newline/>
+                    <group expand="0" string="Group By">
+                        <filter name="kanban_state" string="State" domain="" context="{'group_by': 'kanban_state'}"/>
+                        <filter name="host" string="Host" domain="" context="{'group_by': 'host'}"/>
+                        <filter name="port" string="Port" domain="" context="{'group_by': 'port'}"/>
+                        <filter name="username" string="Username" domain="" context="{'group_by': 'username'}"/>
+                    </group>
+
+				    <filter string="Active Connections"
+						name="only_active_records" domain="[('kanban_state' , '=' , 'done')]"/>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- New Action -->
+        <record id="connector_sftp_action" model="ir.actions.act_window">
+            <field name="name">SFTP Connections</field>
+            <field name="res_model">sftp.connection</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_only_active_records":1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add a new SFTP source
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+                id="menu_api_section"
+                name="API section"
+                parent="base.menu_custom"
+                sequence="10"/>
+
+        <menuitem
+                id="menu_connector_sftp"
+                name="SFTP Connections"
+                parent="menu_api_section"
+                action="connector_sftp_action"
+                sequence="10"/>
+
+    </data>
+</odoo>
