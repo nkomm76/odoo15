@@ -81,8 +81,9 @@ class SFTPModelTemplate(models.Model):
 
             domain = [('state', '=', 'posted'),('invoice_sent', '=', False), ('create_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
                       ('create_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
-            records = self.env[self.model_name.model].search(domain)
+            records = self.env[self.model_name.model].search(domain).filtered(lambda r: r.is_invoice(include_receipts=True))
             attachments = []
+            # TODO: handle the filter for other models separately
             for record in records:
                 if 'message_main_attachment_id' in record._fields:
                     if not record.message_main_attachment_id:
@@ -134,6 +135,7 @@ class SFTPModelTemplate(models.Model):
                     'attachment_ids': attachments,
                 }
                 self.env['log.book'].sudo().create(log_book_vals)
+                _logger.info("Log book successfully created.")
 
     def cron_sftp_update(self, rec_id):
         export_id = self.search([('id', '=', int(rec_id))])
