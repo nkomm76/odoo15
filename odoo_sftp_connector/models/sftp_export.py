@@ -83,6 +83,8 @@ class SFTPModelTemplate(models.Model):
                       ('create_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
             records = self.env[self.model_name.model].search(domain).filtered(lambda r: r.is_invoice(include_receipts=True))
             attachments = []
+
+            _logger.info(f"Records: {records} Found for domain: {domain}")
             # TODO: handle the filter for other models separately
             for record in records:
                 if 'message_main_attachment_id' in record._fields:
