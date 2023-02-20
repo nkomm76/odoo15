@@ -11,8 +11,23 @@
                 <field name="is_recurring_order" invisible="1"/>
                 <field name="start_subscription_on" attrs="{'required': [('is_recurring_order', '=', True)]}"/>
             </xpath>
+            <xpath expr="//group[@name='order_details']//div[hasclass('o_td_label')][1]" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
+            <xpath expr="//group[@name='order_details']//div[hasclass('o_td_label')][2]" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
             <xpath expr="//page[@name='order_lines']//tree/field[@name='name']" position="attributes">
                 <attribute name="widget">html</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']//tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']//tree/field[@name='price_total']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>

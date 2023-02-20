@@ -4,6 +4,16 @@ from odoo import models, fields, _, api
 from odoo.exceptions import ValidationError
 
 
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    total_price_reduce_taxexcl = fields.Monetary(compute='_compute_total_price_reduce_taxexcl', string='Total', store=True)
+
+    @api.depends('price_reduce_taxexcl', 'product_uom_qty')
+    def _compute_total_price_reduce_taxexcl(self):
+        for line in self:
+            line.total_price_reduce_taxexcl = line.price_reduce_taxexcl * line.product_uom_qty if line.product_uom_qty else 0.0
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 

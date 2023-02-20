@@ -193,7 +193,7 @@ msgstr "Hat Nachricht"
 #: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__host
 #: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
 msgid "Host"
-msgstr "Gastgeber"
+msgstr ""
 
 #. module: odoo_sftp_connector
 #: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__host_key
@@ -421,7 +421,7 @@ msgstr "Passwort"
 #: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__port
 #: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.connector_sftp_view_search
 msgid "Port"
-msgstr "Hafen"
+msgstr ""
 
 #. module: odoo_sftp_connector
 #: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_connection__private_key
@@ -480,12 +480,12 @@ msgstr ""
 #. module: odoo_sftp_connector
 #: model:ir.model.fields,field_description:odoo_sftp_connector.field_sftp_export_template__cron_id
 msgid "Schedule Action"
-msgstr ""
+msgstr "Zeitplan"
 
 #. module: odoo_sftp_connector
 #: model_terms:ir.ui.view,arch_db:odoo_sftp_connector.sftp_export_form
 msgid "Scheduled Action"
-msgstr ""
+msgstr "Zeitplan"
 
 #. module: odoo_sftp_connector
 #: model:ir.actions.act_window,name:odoo_sftp_connector.sftp_export_action
