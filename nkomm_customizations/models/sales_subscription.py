@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import datetime
 
 from odoo import models, fields, _, api
 
@@ -8,6 +9,7 @@ class SaleSubscription(models.Model):
 
     first_invoice = fields.Boolean(compute='compute_first_invoice_done', store=True)
     start_subscription_on = fields.Date(string="Vertragsbeginn", required=True)
+    end_subscription_on = fields.Date(string="Vertragsende")
 
     @api.depends('invoice_count')
     def compute_first_invoice_done(self):
@@ -25,8 +27,11 @@ class SaleSubscription(models.Model):
         for sub in sub_ids:
             if not sub.first_invoice:
                 sub.first_invoice = True
-                # sub.start_subscription()
 
+        # Close those subscriptions on which the end date is expired
+        current_date = datetime.date.today()
+        for subscription in self.search([('end_subscription_on', '<=', current_date)]):
+            subscription.set_close()
         return invoices
 
     def _get_subscription_domain_for_invoicing(self, current_date, tags):
@@ -37,6 +42,7 @@ class SaleSubscription(models.Model):
             ('recurring_next_date', '<=', current_date),
             ('first_invoice', '=', False),
             ('start_subscription_on', '<=', current_date),
+            ('end_subscription_on', '>=', current_date),
             ('template_id.payment_mode', '!=', 'manual'),
             '|',
             ('stage_category', '=', 'progress'),

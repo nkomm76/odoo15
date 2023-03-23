@@ -14,6 +14,7 @@ class SaleOrderLine(models.Model):
         for line in self:
             line.total_price_reduce_taxexcl = line.price_reduce_taxexcl * line.product_uom_qty if line.product_uom_qty else 0.0
 
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 

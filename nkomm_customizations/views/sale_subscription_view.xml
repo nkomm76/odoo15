@@ -10,6 +10,7 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="first_invoice" string="First Invoice Done?" invisible="1"/>
                 <field name="start_subscription_on"/>
+                <field name="end_subscription_on"/>
             </xpath>
 
         </field>
