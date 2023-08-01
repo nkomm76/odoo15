@@ -5,7 +5,8 @@
     'summary': """Connect Odoo instance with ITscope""",
 
     'description': """
-        - Fetch Products by ID
+        - Fetch Product Details by ITScope ID
+        - Website Product Page Changes
     """,
 
     'author': "aleemcahn",
@@ -15,10 +16,10 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '15.0.0',
+    'version': '16.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'website_sale'],
+    'depends': ['base', 'product', 'website_sale', 'stock'],
     # 'external_dependencies': {'python': ['pycountry']},
 
     # always loaded

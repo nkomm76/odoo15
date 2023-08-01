@@ -6,15 +6,15 @@
             <section class="s_faq_collapse pt32 pb32">
                 <div class="container">
                     <div id="myCollapse" class="accordion" role="tablist">
-                        <div class="card bg-white" data-name="Item">
-                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false"
-                               class="collapsed card-header" data-target="#collapse1">
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                               class="collapsed card-header" data-bs-target="#collapse1">
                                 <b>Produktdetails</b>
                             </a>
                             <div id="collapse1" class="collapse" data-parent="#myCollapse" role="tabpanel">
                                 <div class="card-body" >
-                                    <div t-if="product.html_datasheet" class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item"
+                                    <div t-if="product.html_datasheet" style="height: auto;" class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" style="display: block;width: 100%;height: 500px;"
                                                 t-att-src="product.html_datasheet"
                                                 allowfullscreen=""/>
                                     </div>
@@ -25,8 +25,8 @@
                             </div>
                         </div>
                         <div class="card bg-white" data-name="Item">
-                            <a href="#" role="tab" data-toggle="collapse" aria-expanded="false"
-                               class="collapsed card-header" data-target="#collapse2">
+                            <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                               class="collapsed card-header" data-bs-target="#collapse2">
                                 <b>Downloads</b>
                             </a>
                             <div id="collapse2" class="collapse" data-parent="#myCollapse" role="tabpanel">
