@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- New report layout for din5008 format -->
-        <template id="external_layout_din5008" inherit_id="l10n_de.external_layout_din5008">
+        <template id="external_layout_din5008" inherit_id="l10n_din5008.external_layout_din5008">
             <xpath expr="//t[@t-if='company.country_id']" position="replace"/>
 
             <xpath expr="//t[@t-if='company.name']/span" position="attributes">

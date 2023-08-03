@@ -19,7 +19,7 @@ class SaleSubscription(models.Model):
                 first_invoice_done = False
             sub.first_invoice = first_invoice_done
 
-    def _recurring_create_invoice(self, automatic=False, batch_size=20):
+    def _recurring_create_invoice(self, automatic=False, batch_size=20): #_cron_recurring_create_invoice
         """If invoices are created then go ahead and set first_invoice to True"""
         invoices = super(SaleSubscription, self)._recurring_create_invoice(automatic=automatic, batch_size=batch_size)
         sub_ids = invoices.mapped('invoice_line_ids').mapped('subscription_id')
@@ -34,7 +34,7 @@ class SaleSubscription(models.Model):
             subscription.set_close()
         return invoices
 
-    def _get_subscription_domain_for_invoicing(self, current_date, tags):
+    def _get_subscription_domain_for_invoicing(self, current_date, tags): #_recurring_invoice_domain
         """Override the domain and custom domain"""
         return [
             ('tag_ids', 'not in', tags.ids),

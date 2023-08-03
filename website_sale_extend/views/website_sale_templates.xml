@@ -6,8 +6,8 @@
                 <button name="o_add_attachment_button"
                         type="submit"
                         class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#add_sale_attachment"
+                        data-bs-toggle="modal"
+                        data-bs-target="#add_sale_attachment"
                         data-icon-class="fa-chevron-right">
                     Anhänge hinzufügen
                 </button>
