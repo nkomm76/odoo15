@@ -20,6 +20,7 @@
     # for the full list
     'category': 'Uncategorized',
     'version': '16.0.0',
+    'license': 'LGPL-3',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'contacts', 'l10n_din5008', 'purchase', 'sale_subscription'],

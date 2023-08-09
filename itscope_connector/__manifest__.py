@@ -19,7 +19,7 @@
     'version': '16.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'website_sale', 'stock'],
+    'depends': ['base', 'product', 'website_sale', 'stock', 'sale_management'],
     # 'external_dependencies': {'python': ['pycountry']},
 
     # always loaded

@@ -6,11 +6,12 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='order_details']" position="inside">
-                <field name="subscription_invoice_today" invisible="1"/>
+            <!--<xpath expr="//group[@name='order_details']" position="inside">
+                <field name="first_invoice" string="First Invoice Done?" invisible="1"/>
+                <field name="subscription_invoice_today" invisible="0"/>
                 <field name="is_recurring_order" invisible="1"/>
                 <field name="start_subscription_on" attrs="{'required': [('is_recurring_order', '=', True)]}"/>
-            </xpath>
+            </xpath>-->
             <xpath expr="//group[@name='order_details']//div[hasclass('o_td_label')][1]" position="attributes">
                 <attribute name="groups"/>
             </xpath>
@@ -28,6 +29,23 @@
             </xpath>
             <xpath expr="//page[@name='order_lines']//tree/field[@name='price_total']" position="attributes">
                 <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="nkomm_sale_subscription_order_view_form" model="ir.ui.view">
+        <field name="name">Nkomm Subscription Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_order_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='next_invoice_date'][1]" position="attributes">
+                <attribute name="attrs">{'required': [('recurrence_id', '!=', False), ('state', 'in', ['sale',
+                    'done'])], 'readonly': 1}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='next_invoice_date'][2]" position="attributes">
+                <attribute name="attrs">{'required': [('recurrence_id', '!=', False), ('state', 'in', ['sale',
+                    'done'])]}
+                </attribute>
             </xpath>
         </field>
     </record>
