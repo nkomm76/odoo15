@@ -63,7 +63,7 @@
 
     </template>
 
-    <record id="purchase.action_report_purchase_order" model="ir.actions.report">
+    <record id="purchase.report_purchase_quotation" model="ir.actions.report">
         <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
     </record>
 </odoo>
