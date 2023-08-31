@@ -76,7 +76,7 @@
                             <p class="mb-0 text-left" t-if="company.email">
                                 <span t-field="company.email"/>
                             </p>
-                            <p class="mb-0 text-left" t-if="company.website"><span t-field="company.website"/>:
+                            <p class="mb-0 text-left" t-if="company.website"><span t-field="company.website"/>
                             </p>
                         </div>
                         <div class="col-3">
@@ -125,6 +125,20 @@
             </xpath>
 
         </template>
+
+        <record id="paperformat_euro_din_nkomm" model="report.paperformat">
+            <field name="name">European A4 for DIN5008 N-Komm</field>
+            <field name="default" eval="False" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">20</field>
+            <field name="margin_right">10</field>
+            <field name="dpi">75</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+        </record>
 
     </data>
 </odoo>
