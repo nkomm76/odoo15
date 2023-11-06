@@ -10,12 +10,12 @@
     "author": "aleemcaan",
     "license": "AGPL-3",
     "depends": ['base', 'mail', 'account'],
-    "external_dependencies": {
-        "python": [
-            'pysftp',
-            'mock',
-        ],
-    },
+    # "external_dependencies": {
+    #     "python": [
+    #         'pysftp',
+    #         'mock',
+    #     ],
+    # },
     "data": [
         'security/ir.model.access.csv',
         'views/connector_sftp_view.xml',
