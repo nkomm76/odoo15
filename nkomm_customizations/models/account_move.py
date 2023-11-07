@@ -17,7 +17,7 @@ class AccountMove(models.Model):
     digital_invoice = fields.Boolean(related="partner_id.digital_invoice")
     invoice_date = fields.Date(string='Invoice/Bill Date', default=lambda self: fields.Datetime.now(), readonly=True, index=True, copy=False,
                                states={'draft': [('readonly', False)]})
-    invoice_date_sub = fields.Date(string='Date for Subscription', default=lambda self: fields.Datetime.now(), readonly=True,
+    invoice_date_sub = fields.Datetime(string='Date for Subscription', default=lambda self: fields.Datetime.now(), readonly=True,
                                index=True, copy=False,
                                states={'draft': [('readonly', False)]})
 
