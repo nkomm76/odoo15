@@ -79,8 +79,8 @@ class SFTPModelTemplate(models.Model):
             start_of_day = today.replace(hour=0, minute=0, second=0, microsecond=0)
             end_of_day = today.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-            domain = [('state', '=', 'posted'),('invoice_sent', '=', False), ('create_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
-                      ('create_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
+            domain = [('state', '=', 'posted'), ('invoice_sent', '=', False), ('invoice_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
+                      ('invoice_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
             records = self.env[self.model_name.model].search(domain).filtered(lambda r: r.is_invoice(include_receipts=True))
             attachments = []
 
