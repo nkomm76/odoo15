@@ -10,10 +10,12 @@
             </style>
         </xpath>
         <xpath expr="//div[@t-field='o.partner_id']" position="attributes">
-            <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}</attribute>
+            <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}
+            </attribute>
         </xpath>
         <xpath expr="//div[@t-field='o.dest_address_id']" position="attributes">
-            <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}</attribute>
+            <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}
+            </attribute>
         </xpath>
 
         <xpath expr="//th[@name='th_amount']/strong" position="replace">
@@ -70,4 +72,8 @@
         </xpath>
 
     </template>
+
+    <record id="purchase.action_report_purchase_order" model="ir.actions.report">
+        <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
+    </record>
 </odoo>

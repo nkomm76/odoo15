@@ -72,15 +72,14 @@ class SFTPModelTemplate(models.Model):
 
     def export_data(self):
         if self.connector_id:
-            user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz or 'UTC')
-            today = datetime.now(user_tz)
+            today = fields.Datetime.now()
 
             # Set the start and end of the day in UTC
             start_of_day = today.replace(hour=0, minute=0, second=0, microsecond=0)
             end_of_day = today.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-            domain = [('state', '=', 'posted'),('invoice_sent', '=', False), ('create_date', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
-                      ('create_date', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S'))]
+            domain = [('state', '=', 'posted'), ('invoice_sent', '=', False), ('invoice_date_sub', '>=', start_of_day.strftime('%Y-%m-%d %H:%M:%S')),
+                      ('invoice_date_sub', '<', end_of_day.strftime('%Y-%m-%d %H:%M:%S')), ('invoice_date', '=', start_of_day.date())]
             records = self.env[self.model_name.model].search(domain).filtered(lambda r: r.is_invoice(include_receipts=True))
             attachments = []
 

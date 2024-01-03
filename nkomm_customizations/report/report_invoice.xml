@@ -71,5 +71,12 @@
             <xpath expr="//div[@name='comment']" position="replace"/>
 
         </template>
+
+        <record id="account.account_invoices" model="ir.actions.report">
+            <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
+        </record>
+        <record id="account.account_invoices_without_payment" model="ir.actions.report">
+            <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
+        </record>
     </data>
 </odoo>

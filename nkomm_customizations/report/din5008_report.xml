@@ -2,7 +2,12 @@
 <odoo>
     <data>
         <!-- New report layout for din5008 format -->
-        <template id="external_layout_din5008" inherit_id="l10n_din5008.external_layout_din5008">
+        <template id="external_layout_din5008" inherit_id="l10n_de.external_layout_din5008">
+
+            <xpath expr="//div[@t-att-data-oe-model='o and o._name']" position="attributes">
+              <attribute name="style">padding-top: 15px</attribute>
+            </xpath>
+
             <xpath expr="//t[@t-if='company.country_id']" position="replace"/>
 
             <xpath expr="//t[@t-if='company.name']/span" position="attributes">
@@ -76,7 +81,7 @@
                             <p class="mb-0 text-left" t-if="company.email">
                                 <span t-field="company.email"/>
                             </p>
-                            <p class="mb-0 text-left" t-if="company.website"><span t-field="company.website"/>:
+                            <p class="mb-0 text-left" t-if="company.website"><span t-field="company.website"/>
                             </p>
                         </div>
                         <div class="col-3">
@@ -125,6 +130,20 @@
             </xpath>
 
         </template>
+
+        <record id="paperformat_euro_din_nkomm" model="report.paperformat">
+            <field name="name">European A4 for DIN5008 N-Komm</field>
+            <field name="default" eval="False" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">15</field>
+            <field name="margin_right">5</field>
+            <field name="dpi">70</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">50</field>
+        </record>
 
     </data>
 </odoo>
