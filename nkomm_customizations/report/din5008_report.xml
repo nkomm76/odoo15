@@ -3,6 +3,12 @@
     <data>
         <!-- New report layout for din5008 format -->
         <template id="external_layout_din5008" inherit_id="l10n_de.external_layout_din5008">
+
+            <xpath expr="//img[@t-if='company.logo']" position="attributes">
+                <attribute name="t-att-style"/>
+                <attribute name="style">max-height:53mm</attribute>
+            </xpath>
+
             <xpath expr="//div[@t-att-data-oe-model='o and o._name']" position="attributes">
               <attribute name="style">padding-top: 15px</attribute>
             </xpath>
@@ -135,13 +141,13 @@
             <field name="default" eval="False" />
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">40</field>
+            <field name="margin_top">43</field>
             <field name="margin_bottom">40</field>
             <field name="margin_left">15</field>
             <field name="margin_right">5</field>
-            <field name="dpi">70</field>
-            <field name="header_line" eval="False" />
-            <field name="header_spacing">50</field>
+            <field name="dpi">80</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">53</field>
         </record>
 
     </data>
