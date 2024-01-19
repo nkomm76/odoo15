@@ -12,8 +12,7 @@
     "depends": ['base', 'mail', 'account'],
     "external_dependencies": {
         "python": [
-            # TODO: Uncomment this after upgrade
-            # 'pysftp',
+            'pysftp',
         ],
     },
     "data": [
