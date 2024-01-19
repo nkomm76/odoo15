@@ -4,7 +4,7 @@
     "name": "SFTP Connector",
     "summary": "Provides Connection with SFTP Server",
     "description": "User will be able to open a connection with SFTP server and export invoices/Bills/Credit notes to SFTP server",
-    "version": "15.0.0",
+    "version": "16.0",
     "category": "Base",
     "website": "",
     "author": "aleemcaan",
@@ -12,8 +12,8 @@
     "depends": ['base', 'mail', 'account'],
     "external_dependencies": {
         "python": [
-            'pysftp',
-            'mock',
+            # TODO: Uncomment this after upgrade
+            # 'pysftp',
         ],
     },
     "data": [

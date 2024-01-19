@@ -43,7 +43,7 @@
             <attribute name="t-options">{"widget": "html"}</attribute>
         </xpath>
 
-        <xpath expr="//t[@t-foreach='doc.order_line']" position="before">
+        <xpath expr="//t[@t-set='lines_to_report']" position="after">
             <t t-set="line_count" t-value="1"/>
         </xpath>
 
@@ -76,6 +76,7 @@
     <record id="sale.action_report_saleorder" model="ir.actions.report">
         <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
     </record>
+
     <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
         <field name="paperformat_id" ref="nkomm_customizations.paperformat_euro_din_nkomm"/>
     </record>

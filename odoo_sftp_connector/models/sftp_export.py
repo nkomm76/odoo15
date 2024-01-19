@@ -72,7 +72,6 @@ class SFTPModelTemplate(models.Model):
 
     def export_data(self):
         if self.connector_id:
-            user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz or 'UTC')
             today = fields.Datetime.now()
 
             # Set the start and end of the day in UTC
