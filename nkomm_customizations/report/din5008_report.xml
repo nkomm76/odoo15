@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- New report layout for din5008 format -->
-        <template id="external_layout_din5008" inherit_id="l10n_de.external_layout_din5008">
+        <template id="external_layout_din5008" inherit_id="l10n_din5008.external_layout_din5008">
 
             <xpath expr="//div[@t-att-data-oe-model='o and o._name']" position="attributes">
               <attribute name="style">padding-top: 15px</attribute>
