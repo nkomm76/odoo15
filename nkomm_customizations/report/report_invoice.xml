@@ -7,12 +7,20 @@
                     .din_page.invoice_note .page tr td{
                     vertical-align: top;
                     }
+                    .lines_table {
+                    border-top: 1px solid lightgray !important;
+                    border-bottom: 1px solid lightgray !important;
+                    }
                 </style>
             </xpath>
 
             <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
                    position="replace">
                 <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']/thead" position="attributes">
+                <attribute name="class">lines_table</attribute>
             </xpath>
 
             <xpath expr="//th[@name='th_description']" position="before">

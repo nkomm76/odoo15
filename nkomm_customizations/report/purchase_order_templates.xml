@@ -7,12 +7,22 @@
                 .din_page.invoice_note .page tr td{
                 vertical-align: top;
                 }
+                .lines_table {
+                border-top: 1px solid lightgray !important;
+                border-bottom: 1px solid lightgray !important;
+                }
             </style>
         </xpath>
+
+        <xpath expr="//table[hasclass('o_main_table')]/thead" position="attributes">
+            <attribute name="class">lines_table</attribute>
+        </xpath>
+
         <xpath expr="//div[@t-field='o.partner_id']" position="attributes">
             <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}
             </attribute>
         </xpath>
+
         <xpath expr="//div[@t-field='o.dest_address_id']" position="attributes">
             <attribute name="t-options">{"widget": "contact", "fields": ["address", "name"], "no_marker": True}
             </attribute>
