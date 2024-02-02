@@ -24,7 +24,7 @@ def _new_handle_automatic_invoices(self, auto_commit, invoices):
             if order.recurrence_id.draft_invoice:
                 self.env.cr.commit()
 
-                # aleemcaan edited this function: Handle changing next_invoice_date regardless
+                # START [IMP]-aleemcaan edited this function: Handle changing next_invoice_date regardless
                 # of invoice is posted or drafted
                 aml_by_subscription = defaultdict(lambda: self.env['account.move.line'])
                 for aml in invoice.invoice_line_ids:
@@ -38,6 +38,7 @@ def _new_handle_automatic_invoices(self, auto_commit, invoices):
                     end_dates = [ed for ed in aml.mapped('subscription_end_date') if ed]
                     if end_dates and max(end_dates) > subscription.next_invoice_date:
                         subscription.next_invoice_date = max(end_dates) + relativedelta(days=1)
+                # END aleemcaan edited
             else:
                 invoice.action_post()
         else:
