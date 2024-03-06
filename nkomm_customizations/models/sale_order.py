@@ -14,6 +14,17 @@ class SaleOrderLine(models.Model):
         for line in self:
             line.total_price_reduce_taxexcl = line.price_reduce_taxexcl * line.product_uom_qty if line.product_uom_qty else 0.0
 
+    def _prepare_invoice_line(self, **optional_values):
+        self.ensure_one()
+        res = super()._prepare_invoice_line(**optional_values)
+        description = res.get('name', '')
+        if self.temporal_type == 'subscription' or self.order_id.subscription_management == 'upsell':
+            description = self.name
+        res.update({
+            'name': description,
+        })
+        return res
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
