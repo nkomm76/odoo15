@@ -10,6 +10,8 @@ class PurchaseOrder(models.Model):
         for record in self:
             if record.partner_id:
                 data = record.l10n_din5008_template_data
+                if record.user_id and record.user_id.phone:
+                    data.append((_("Telefon"), record.user_id.phone or record.user_id.mobile))
                 data.append((_("Kundennummer"), record.partner_id.sequence_number))
                 record.l10n_din5008_template_data = data
         return res
