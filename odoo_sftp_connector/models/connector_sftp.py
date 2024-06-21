@@ -41,11 +41,12 @@ class SFTPConnection(models.Model):
         try:
             cnopts = pysftp.CnOpts()
             cnopts.hostkeys = None
+            port = self.port
             host = self.host or "demo.wftpserver.com"
             password = self.password or False
             username = self.username or "demo-user"
 
-            with pysftp.Connection(host=host, username=username, password=password, cnopts=cnopts) as sftp:
+            with pysftp.Connection(host=host, username=username, password=password, cnopts=cnopts, port=port) as sftp:
                 _logger.info("Successfully connected to SFTP server")
                 self.message = "Successfully connected to SFTP server"
                 self.kanban_state = 'done'
