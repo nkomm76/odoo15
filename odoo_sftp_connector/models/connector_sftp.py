@@ -63,6 +63,7 @@ class SFTPConnection(models.Model):
         host = self.host or "demo.wftpserver.com"
         password = self.password or False
         username = self.username or "demo-user"
+        port = self.port
 
         if self.private_key:
             cnopts = pysftp.CnOpts()
@@ -72,7 +73,7 @@ class SFTPConnection(models.Model):
             cnopts.hostkeys = None
         try:
             with pysftp.Connection(host=host, username=username, password=password,
-                                   cnopts=cnopts) as sftp:
+                                   cnopts=cnopts, port=port) as sftp:
                 sftp.putfo(pdf_file, remote_path)
             pdf_file.close()
             _logger.info("File uploaded successfully")
