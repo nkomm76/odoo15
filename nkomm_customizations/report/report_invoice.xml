@@ -77,7 +77,7 @@
             </xpath>
 
             <xpath expr="//div[@name='comment']" position="before">
-                <div t-if="o.move_type in ('out_invoice', 'in_refund')" name="extra_text" style="margin-left: 5mm; margin-right: 10mm; margin-top: 8.46mm; color: black;">
+                <div name="extra_text" style="margin-left: 5mm; margin-right: 10mm; margin-top: 8.46mm; color: black;">
                     <span>Sofern nicht anders angegeben entspricht Leistungsdatum dem Rechnungsdatum</span>
                 </div>
             </xpath>
