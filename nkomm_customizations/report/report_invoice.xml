@@ -76,6 +76,12 @@
                 <attribute name="class">mt-4</attribute>
             </xpath>
 
+            <xpath expr="//div[@name='comment']" position="before">
+                <div name="extra_text" style="margin-left: 5mm; margin-right: 10mm; margin-top: 8.46mm; color: black;">
+                    <span>Sofern nicht anders angegeben entspricht Leistungsdatum dem Rechnungsdatum</span>
+                </div>
+            </xpath>
+
             <xpath expr="//div[@name='comment']" position="replace"/>
 
         </template>
