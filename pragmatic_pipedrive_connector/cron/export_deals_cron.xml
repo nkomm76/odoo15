@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.cron" id="export_deals" forcecreate="True">
+            <field name="name">Export Deals Cron To Pipedrive</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field eval="False" name="active"/>
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">model.filter_deals()</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pipedrive_product_inherit">
+            <field name="name">pipedrive.inherit.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="pd_prod_id"/>
+
+                    <!--<field name="pd_product_code"/>-->
+                </xpath>
+                <xpath expr="//sheet/notebook/page[5]" position="after">
+                    <page string="Pipedrive Products Information">
+	                    <group>
+	                        <field name="pd_direct_code"/>
+                            <field name="pd_currency"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

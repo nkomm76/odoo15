@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="company_partner_inherit">
+            <field name="name">pipedrive.partner.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[1]" position="after">
+                    <page string="Pipedrive Connector">
+                        <button string="Authenticate" name="authenticate" type="object" class="oe-highlight" icon="fa-wrench"/>
+                        <button string="Refresh Token" name="refresh" type="object" class="oe-highlight" icon="fa-refresh"/>
+                        <group>
+                            <group>
+                                <field name="client_id"/>
+                                <field name="client_secret"/>
+                                <field name="access_token"/>
+                                <field name="refresh_token"/>
+                                <field name="token_type"/>
+                                <field name="expires_in" invisible="1"/>
+                                <field name="scope" invisible="1"/>
+                                <field name="redirect_uri"/>
+                            </group>
+                        </group>
+                        <group>
+                            <h2>Sync</h2>
+                            <group>
+                                <button string="1.Import Organisation" name="import_organization" icon="fa-arrow-down" type="object"
+                                        class="oe-highlight"/>
+                                <button string="2.Import Contacts" name="import_contacts" icon="fa-arrow-down" type="object" class="oe-highlight"/>
+                                <button string="3.Import Products" name="import_products" icon="fa-arrow-down" type="object" class="oe-highlight"/>
+                                <button string="4.Import Stages" name="import_stages" icon="fa-arrow-down" type="object" class="oe-highlight"/>
+                                <button string="5.Import Deals(In Proposal)" name="import_deals" icon="fa-arrow-down" type="object"
+                                        class="oe-highlight"/>
+                                <button string="6.Import WON/LOST Deals" name="import_other_deals" icon="fa-arrow-down" type="object"
+                                        class="oe-highlight"/>
+                                <button string="Import Activities" name="import_activities" icon="fa-arrow-down" type="object" class="oe-highlight"/>
+                                <!--Due to access error-->
+                                <!--<button string="Import Notes" name="import_notes" icon="fa-arrow-down" type="object" class="oe-highlight"/>-->
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

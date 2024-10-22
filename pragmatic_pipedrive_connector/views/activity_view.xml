@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pipedrive_activity_inherit">
+            <field name="name">pipedrive.inherit.activity.form</field>
+            <field name="model">mail.activity</field>
+            <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_deadline']" position="after">
+                <field name="pd_activity_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

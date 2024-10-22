@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pipedrive_activity_type__inherit">
+            <field name="name">pipedrive.inherit.activity.type.form</field>
+            <field name="model">mail.activity.type</field>
+            <field name="inherit_id" ref="mail.mail_activity_type_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet//group/field[@name='category']" position="before">
+                <field name="pd_activity_type"/>
+                 <field name="pd_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

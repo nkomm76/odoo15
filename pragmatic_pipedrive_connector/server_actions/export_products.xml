@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+ <record id="export_products_server_action" model="ir.actions.server">
+            <field name="name">Export Products to Pipedrive</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="pragmatic_pipedrive_connector.model_product_product"/>
+            <field name="binding_model_id" ref="pragmatic_pipedrive_connector.model_product_product"/>
+            <field name="code">
+            records.export_products()
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
