@@ -88,17 +88,31 @@ class SFTPModelTemplate(models.Model):
             for record in records:
                 if 'message_main_attachment_id' in record._fields:
                     if not record.message_main_attachment_id:
-                        # if self.model_name.model == 'account.move':
-                        pdf = self.env.ref('account.account_invoices').sudo()._render_qweb_pdf(
-                            [record.id])[0]
-
-                        # TODO: For Sale orders
-                        # elif self.model_name.model == 'sale.order':
-                        #     pdf = self.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf(
-                        #         [record.id])[0]
+                        pdf = self.env['ir.actions.report'].sudo()._render_qweb_pdf('account.account_invoices', [record.id])[0]
 
                         pdf = base64.b64encode(pdf)
                         binary_data = pdf
+
+                        # Check if an attachment already exists for this record
+                        existing_attachment = self.env['ir.attachment'].search([
+                            ('res_model', '=', record._name),
+                            ('res_id', '=', record.id),
+                            ('name', '=', f"{record.name}.pdf"),
+                        ], limit=1)
+
+                        if existing_attachment:
+                            # Use the existing attachment
+                            record.message_main_attachment_id = existing_attachment
+                        else:
+                            # Create a new attachment only if it doesn't already exist
+                            attachment = self.env['ir.attachment'].create({
+                                'name': f"{record.name}.pdf",
+                                'datas': binary_data,
+                                'res_model': record._name,
+                                'res_id': record.id,
+                                'type': 'binary',
+                            })
+                            record.message_main_attachment_id = attachment
                     else:
                         binary_data = record.message_main_attachment_id.datas
 
