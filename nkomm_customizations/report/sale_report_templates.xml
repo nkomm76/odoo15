@@ -18,9 +18,8 @@
             <attribute name="class">lines_table</attribute>
         </xpath>
 
-        <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
-               position="replace">
-            <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
+        <xpath expr="//th[@name='th_subtotal']/span" position="replace">
+            <span>Gesamt</span>
         </xpath>
 
         <xpath expr="//th[@name='th_description']" position="before">
@@ -74,7 +73,7 @@
             </td>
         </xpath>
 
-        <xpath expr="//p[@t-field='doc.note']" position="replace">
+        <xpath expr="//span[@t-field='doc.note']" position="replace">
             <div class="note" style="font-size:10px !important">
                 <p t-field="doc.note"/>
             </div>

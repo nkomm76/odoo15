@@ -28,7 +28,7 @@
             </attribute>
         </xpath>
 
-        <xpath expr="//th[@name='th_amount']/strong" position="replace">
+        <xpath expr="//th[@name='th_subtotal']/strong" position="replace">
             <strong>Gesamt</strong>
         </xpath>
 

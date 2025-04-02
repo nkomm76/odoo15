@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form create="0" edit="0">
                     <header>
-                        <button name="export_data" attrs="{'invisible': [('state', '=', 'done')]}" string="Export Data to SFTP" type="object" class="btn-primary"/>
+                        <button name="export_data" invisible="state == 'done'" string="Export Data to SFTP" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
                         <group>

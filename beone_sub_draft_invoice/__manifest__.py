@@ -14,7 +14,7 @@
     'website': "http://www.beonegroup.be",
 
     'category': 'Sales/Subscriptions',
-    'version': '16.0',
+    'version': '17.0',
     'license': 'OPL-1',
 
     'price': 50.00,
