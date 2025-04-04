@@ -20,7 +20,7 @@
     'price': 50.00,
     'currency': 'EUR',
 
-    'depends': ['base', 'sale_subscription', 'sale_temporal'],
+    'depends': ['base', 'sale_subscription'],
 
     'images': ['static/description/banner.gif'],
 
