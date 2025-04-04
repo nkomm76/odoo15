@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="pipedrive_crm_inherit">
+            <field name="name">pipedrive.inherit.crm.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet//group/field[@name='partner_id']" position="after">
+                    <field name="pd_deals_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pipedrive_partner_inherit">
+            <field name="name">pipedrive.inherit.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet//group/field[@name='vat']" position="after">
+                <field name="pd_id"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
