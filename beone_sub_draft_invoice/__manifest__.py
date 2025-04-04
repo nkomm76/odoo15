@@ -25,6 +25,6 @@
     'images': ['static/description/banner.gif'],
 
     'data': [
-        'views/sale_temporal.xml',
+        # 'views/sale_temporal.xml',
     ],
 }
