@@ -10,20 +10,11 @@ def migrate(cr, version):
     if module and module.state in ('installed', 'to upgrade'):
         module.write({'state': 'uninstalled'})
 
-    SaleOrder = env['sale.order']
-
-    # Find violating records
-    bad_orders = SaleOrder.search([
-        ('is_subscription', '=', True),
-        ('state', '=', 'sale'),
-        ('subscription_state', '=', '1_draft')
-    ])
-
-    for order in bad_orders:
-        # Log or print to track (optional)
-        print(f"Fixing sale order {order.name} (id={order.id}) with invalid subscription state")
-
-        # Decide the right fix:
-        # Option 1: Mark subscription as 3_progress (most common fix)
-        order.subscription_state = '3_progress'
+    cr.execute("""
+            UPDATE sale_order
+            SET subscription_state = '3_progress'
+            WHERE is_subscription = TRUE
+              AND state = 'sale'
+              AND subscription_state = '1_draft'
+        """)
 
