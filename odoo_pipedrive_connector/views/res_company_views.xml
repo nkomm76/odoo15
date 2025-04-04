@@ -21,8 +21,7 @@
                     </group>
                     <group col="6">
                         <group>
-                            <button string="Sync Products" class="btn-primary" invisible="product_synced == True"
-                                    attrs="{'invisible': [('product_synced', '=', True)]}"/>
+                            <button string="Sync Products" class="btn-primary" invisible="product_synced == True"/>
                         </group>
                         <group>
                             <button string="Sync Contacts" class="btn-primary" style="margin:10px"
