@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pipedrive_product_pricelist_inherit">
+            <field name="name">pipedrive.inherit.product.pricelist.form</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//group/field[@name='applied_on']" position="before">
+                    <field name="pd_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

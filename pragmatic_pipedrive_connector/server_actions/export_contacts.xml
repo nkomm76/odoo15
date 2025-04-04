@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+ <record id="export_contacts_server_action" model="ir.actions.server">
+            <field name="name">Export Contacts to Pipedrive</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="pragmatic_pipedrive_connector.model_res_partner"/>
+            <field name="binding_model_id" ref="pragmatic_pipedrive_connector.model_res_partner"/>
+            <field name="code">
+            records.export_contacts()
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
