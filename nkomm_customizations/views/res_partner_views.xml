@@ -16,6 +16,8 @@
                 <group invisible="is_company">
                     <group>
                         <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister" invisible="is_company"/>
+                        <field name="first_name" placeholder="Vorname"/>
+                        <field name="last_name" placeholder="Nachname"/>
                     </group>
                 </group>
             </xpath>
@@ -29,6 +31,8 @@
             <xpath expr="//page[@name='contact_addresses']/field[@name='child_ids']/form//field[@name='name']"
                    position="before">
                 <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister"/>
+                <field name="first_name" placeholder="Vorname"/>
+                <field name="last_name" placeholder="Nachname"/>
             </xpath>
         </field>
     </record>
@@ -45,4 +49,3 @@
         </field>
     </record>
 </odoo>
-
