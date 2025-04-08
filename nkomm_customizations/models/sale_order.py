@@ -29,6 +29,8 @@ class SaleOrderLine(models.Model):
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    is_sub = fields.Boolean(string='Is Subscription Order')
+
     # @api.model
     # def create(self, vals):
     #     order = super(SaleOrder, self).create(vals)
