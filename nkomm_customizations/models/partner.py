@@ -11,6 +11,7 @@ class ResPartner(models.Model):
     updated = fields.Boolean(default=False)
     first_name = fields.Char(string='Vorname')
     last_name = fields.Char(string='Nachname')
+    x_studio_kurzname = fields.Char(string='Kurzname')
 
     @api.onchange('last_name', 'first_name')
     def _onchange_first_last_name(self):

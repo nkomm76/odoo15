@@ -15,14 +15,16 @@
             <xpath expr="//div[hasclass('oe_title')]" position="after">
                 <group invisible="is_company">
                     <group>
-                        <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister" invisible="is_company"/>
+                        <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister"
+                               invisible="is_company"/>
                         <field name="first_name" placeholder="Vorname"/>
                         <field name="last_name" placeholder="Nachname"/>
                     </group>
                 </group>
             </xpath>
             <xpath expr="//span[@name='address_name']" position="before">
-                <field name="sequence_number" string="Customer Number"/>
+                <field name="sequence_number" string="Kundennummer"/>
+                <field name="x_studio_kurzname" string="Kurzname" help="Hier wird der Kurzname für ELO definiert"/>
             </xpath>
             <xpath expr="//page[@name='contact_addresses']/field[@name='child_ids']/form//field[@name='name']"
                    position="attributes">
@@ -34,6 +36,22 @@
                 <field name="first_name" placeholder="Vorname"/>
                 <field name="last_name" placeholder="Nachname"/>
             </xpath>
+
+            <xpath expr="//field[@name='ref']" position="replace"/>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='contact_addresses']/field[@name='child_ids']/form[1]/sheet[1]/group[1]/group[1]/field[@name='title'][2]"
+                   position="replace"/>
+            <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]/h1[1]/field[@name='name'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="required">(type == 'contact') or ((is_company == False) and (type == 'contact'))
+                </attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='contact_addresses']/field[@name='child_ids']/form[1]/sheet[1]/group[1]/group[1]/field[@name='name']"
+                   position="attributes">
+                <attribute name="force_save">True</attribute>
+                <attribute name="readonly">1</attribute>
+                <attribute name="required">(type == 'contact') or (type == 'contact')</attribute>
+            </xpath>
+
         </field>
     </record>
 
@@ -45,6 +63,14 @@
 
             <xpath expr="//field[@name='display_name']" position="before">
                 <field name="sequence_number" string="Customer Number" optional="hide"/>
+            </xpath>
+
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="x_studio_kurzname" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="after">
+                <field name="digital_invoice" optional="show"/>
+                <field name="property_payment_term_id" optional="show"/>
             </xpath>
         </field>
     </record>
