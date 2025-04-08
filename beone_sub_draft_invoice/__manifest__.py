@@ -14,17 +14,17 @@
     'website': "http://www.beonegroup.be",
 
     'category': 'Sales/Subscriptions',
-    'version': '16.0',
+    'version': '17.0',
     'license': 'OPL-1',
 
     'price': 50.00,
     'currency': 'EUR',
 
-    'depends': ['base', 'sale_subscription', 'sale_temporal'],
+    'depends': ['base', 'sale_subscription'],
 
     'images': ['static/description/banner.gif'],
 
     'data': [
-        'views/sale_temporal.xml',
+        # 'views/sale_temporal.xml',
     ],
 }

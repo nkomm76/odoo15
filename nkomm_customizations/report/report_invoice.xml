@@ -14,9 +14,9 @@
                 </style>
             </xpath>
 
-            <xpath expr="//th[@name='th_subtotal']/span[@groups='account.group_show_line_subtotals_tax_excluded']"
+            <xpath expr="//th[@name='th_subtotal']/span"
                    position="replace">
-                <span groups="account.group_show_line_subtotals_tax_excluded">Gesamt</span>
+                <span>Gesamt</span>
             </xpath>
 
             <xpath expr="//table[@name='invoice_line_table']/thead" position="attributes">

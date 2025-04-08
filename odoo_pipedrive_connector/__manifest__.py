@@ -21,7 +21,8 @@
 ################################################################################
 {
     'name': "Odoo Pipedrive Connector",
-    'version': '16.0.1.0.0',
+
+    'version': '17.0',
     'category': 'Productivity',
     'summary': """Integrate contacts, products and leads between Pipedrive 
      and Odoo""",

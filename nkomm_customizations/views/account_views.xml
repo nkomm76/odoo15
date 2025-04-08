@@ -9,13 +9,13 @@
         <field name="arch" type="xml">
 
             <xpath expr="//group[@id='header_right_group']" position="inside">
-                <label for="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', True)]}"
+                <label for="digital_invoice" invisible="digital_invoice"
                        string="Digitale Rechnung"/>
-                <field name="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', True)]}" class="oe_inline"
+                <field name="digital_invoice" invisible="digital_invoice" class="oe_inline"
                        nolabel="1" widget="boolean_toggle"/>
-                <label for="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', False)]}"
+                <label for="digital_invoice" invisible="not digital_invoice"
                        string="Digitale Rechnung" style="color:red"/>
-                <field name="digital_invoice" attrs="{'invisible': [('digital_invoice', '=', False)]}" class="oe_inline"
+                <field name="digital_invoice" invisible="not digital_invoice" class="oe_inline"
                        nolabel="1" widget="boolean_toggle"/>
             </xpath>
             <xpath expr="//field[@name='invoice_line_ids']//tree/field[@name='name']" position="attributes">

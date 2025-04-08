@@ -9,27 +9,23 @@
         - Customized Sales Reports
         - Customized Invoice Reports
         - Customized Purchase Reports
-        - Sale Subscription Customzations
     """,
 
     'author': "caantech",
-    'website': "http://www.yourcompany.com",
-
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '16.0',
+    'version': '17.0',
     'license': 'LGPL-3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'l10n_din5008', 'purchase', 'sale_subscription'],
+    'depends': ['base', 'contacts', 'l10n_din5008', 'purchase', 'sale'],
 
     # always loaded
     'data': [
         'data/ir_sequence_data.xml',
         'data/data.xml',
-        # 'views/ir_qweb.xml',
         'report/din5008_report.xml',
         'report/report_invoice.xml',
         'report/sale_report_templates.xml',
@@ -38,7 +34,6 @@
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
         'views/account_views.xml',
-        # 'views/sale_subscription_view.xml',
     ],
 
 }

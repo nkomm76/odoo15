@@ -14,34 +14,34 @@ class SaleOrderLine(models.Model):
         for line in self:
             line.total_price_reduce_taxexcl = line.price_reduce_taxexcl * line.product_uom_qty if line.product_uom_qty else 0.0
 
-    def _prepare_invoice_line(self, **optional_values):
-        self.ensure_one()
-        res = super()._prepare_invoice_line(**optional_values)
-        description = res.get('name', '')
-        if self.temporal_type == 'subscription' or self.order_id.subscription_management == 'upsell':
-            description = self.name
-        res.update({
-            'name': description,
-        })
-        return res
+    # def _prepare_invoice_line(self, **optional_values):
+    #     self.ensure_one()
+    #     res = super()._prepare_invoice_line(**optional_values)
+    #     description = res.get('name', '')
+    #     if self.temporal_type == 'subscription' or self.order_id.subscription_management == 'upsell':
+    #         description = self.name
+    #     res.update({
+    #         'name': description,
+    #     })
+    #     return res
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    @api.model
-    def create(self, vals):
-        order = super(SaleOrder, self).create(vals)
-        if 'next_invoice_date' in vals and not vals['next_invoice_date'] and order.is_subscription:
-            raise ValidationError("Bitte fügen Sie das Datum des Vertragsbeginns für die Abonnementprodukte hinzu.")
-        else:
-            return order
+    # @api.model
+    # def create(self, vals):
+    #     order = super(SaleOrder, self).create(vals)
+    #     if 'next_invoice_date' in vals and not vals['next_invoice_date'] and order.is_subscription:
+    #         raise ValidationError("Bitte fügen Sie das Datum des Vertragsbeginns für die Abonnementprodukte hinzu.")
+    #     else:
+    #         return order
 
-    @api.onchange('next_invoice_date')
-    def _onchange_next_invoice_date(self):
-        for order in self:
-            if order.invoice_count == 0:
-                order.start_date = order.next_invoice_date
+    # @api.onchange('next_invoice_date')
+    # def _onchange_next_invoice_date(self):
+    #     for order in self:
+    #         if order.invoice_count == 0:
+    #             order.start_date = order.next_invoice_date
 
     def _compute_l10n_din5008_template_data(self):
         """Add Customer Number to the template data"""
