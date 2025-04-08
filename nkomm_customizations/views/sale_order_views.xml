@@ -26,4 +26,18 @@
             </xpath>
         </field>
     </record>
+
+    <record id="nkomm_view_sale_order_tree" model="ir.ui.view">
+        <field name="name">nkomm.sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="client_order_ref" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="margin" optional="show"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
