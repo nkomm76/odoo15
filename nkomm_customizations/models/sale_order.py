@@ -30,6 +30,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     is_sub = fields.Boolean(string='Is Subscription Order')
+    maintenance_contract = fields.Char(string="Wartungsvertrag")
 
     # @api.model
     # def create(self, vals):
