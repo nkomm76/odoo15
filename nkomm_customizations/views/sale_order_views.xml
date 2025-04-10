@@ -24,6 +24,13 @@
             <xpath expr="//page[@name='order_lines']//tree/field[@name='price_total']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[@name='sale_header']/group[@name='order_details']/field[@name='date_order'][2]"
+                   position="after">
+                <xpath expr="//field[@name='user_id']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <xpath expr="//field[@name='client_order_ref']" position="move"/>
+            </xpath>
         </field>
     </record>
 
