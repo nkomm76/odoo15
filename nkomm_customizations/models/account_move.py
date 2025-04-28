@@ -42,7 +42,7 @@ class AccountMove(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
-    name = fields.Text(
+    name = fields.Html(
         string='Label',
         compute='_compute_name', store=True, readonly=False, precompute=True,
         tracking=True,
