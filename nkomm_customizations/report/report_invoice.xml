@@ -82,7 +82,9 @@
                 </div>
             </xpath>
 
-            <xpath expr="//div[@name='comment']" position="replace"/>
+            <xpath expr="//div[@name='comment']" position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
 
         </template>
 
